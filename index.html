@@ -4,9 +4,12 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" type="text/css" href="/css/style.css" />
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Work+Sans:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Work+Sans:ital,wght@0,100..900;1,100..900&display=swap"
+      rel="stylesheet"
+    />
     <title>Home</title>
   </head>
   <body>
@@ -26,19 +29,30 @@
         </ul>
       </nav>
     </header>
-    <hr class="line">
-    <p class="newest-text">Newest Posts!</p>
-    <div class="carousel-container">
-        <div class="carousel-wrapper">
-            <div class="blog-container" id="top-posts"></div>
-        </div>
-        <div class="slider-container">
-            <button class="prev-btn">&lt;</button>
-            <button class="next-btn">&gt;</button>
-        </div>
-        <h2 id="blogName"></h2>
+    <hr class="line" />
+    <div class="text-container">
+      <p class="newest-text">Newest Posts!</p>
     </div>
-    <hr class="line">
+    <div class="carousel-container">
+      <div class="carousel-wrapper">
+        <div class="blog-container" id="top-posts"></div>
+      </div>
+      <div class="box">
+        <div class="circle"></div>
+        <p class="author-text">Author: ole123</p>
+        <p class="info-text">
+          You're a coding and gaming enthusiast with a soft spot for hedgehogs,
+          finding joy in both problem-solving and the immersive worlds of
+          gaming.
+        </p>
+      </div>
+    </div>
+    <div class="slider-container">
+      <button class="prev-btn">&lt;</button>
+      <button class="next-btn">&gt;</button>
+    </div>
+    <hr class="line" />
+    <h2 id="blogName"></h2>
     <div id="posts"></div>
     <div class="make-post">
       <button id="show-button">Make</button>
