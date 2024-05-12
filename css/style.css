@@ -1,0 +1,214 @@
+* {
+  margin: 0;
+  padding: 0;
+  background-color: #f3efe2;
+}
+
+#create-show {
+  display: none;
+}
+
+#show-button {
+  display: none;
+}
+
+.blog-card-big {
+  margin: 1rem;
+  padding: 1rem;
+  line-height: 1.7rem;
+}
+
+.post-image-big {
+  width: 500px;
+}
+
+#edit-show {
+  display: none;
+}
+
+#edit-show {
+  display: none;
+}
+
+/*--------------------------------------*/
+
+/* Ensure images are displayed at their intrinsic dimensions */
+.post-image {
+  width: 100%;
+  height: 400px;
+  object-fit: cover;
+}
+
+.post {
+  height: 400px;
+  width: 700px;
+  transition: transform 0.5s ease;
+  
+}
+
+/* Ensure the buttons are positioned absolutely */
+.slider-container {
+  background: transparent;
+  position: absolute; /* Set position to absolute */
+  top: 30%;
+  display: flex;
+  justify-content: space-between; /* Distribute items evenly along the main axis */
+  width: 725px; /* Ensure full width of the container */
+}
+
+
+
+.blog-container {
+  display: flex;
+  height: 400px;
+}
+
+.carousel-wrapper {
+  max-width: 700px;
+  height: 450px;
+  overflow: hidden;
+  display: flex; /* Ensure items remain in a row */
+  margin: auto;
+}
+
+.blog-container {
+  flex-shrink: 0; /* Prevent items from shrinking */
+}
+
+.carousel-container {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+}
+
+/*new code stying old behind*/
+
+.newest-text {
+  display: flex;
+  margin: 1rem;
+  font-style: italic;
+  font-weight: 100;
+  font-size: 2rem;
+}
+
+.line {
+  margin: 1rem;
+  color: #c6bdb6;
+}
+.text-box {
+    position: absolute;
+    bottom: 20px; /* Adjust this value as needed */
+    left: 20px; /* Adjust this value as needed */
+    display: flex;
+    align-items: center;
+    justify-content: start;
+    background: transparent;
+}
+
+.read-more {
+    background-color: transparent;
+    color: white;
+    font-size: 1.4rem;
+    font-family: sans-serif;
+    padding: 10px 20px; /* Adjust padding as needed */
+    border: 2px solid white;
+    cursor: pointer;
+}
+
+.blog-card {
+    position: relative;
+    overflow: hidden;
+}
+
+.gradient-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 400px;
+    /* Add gradient background */
+    background: linear-gradient(to bottom, rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.5));
+    pointer-events: none; /* Ensures the overlay doesn't block interactions with underlying content */
+}
+
+.title-text{
+    position: absolute;
+    bottom: 80px; /* Adjust this value as needed */
+    left: 20px; /* Adjust this value as needed */
+    display: flex;
+    align-items: center;
+    justify-content: start;
+    background: transparent;
+    font-size: 2rem;
+    color: white;
+    font-weight: bold;
+    font-family: sans-serif;
+}
+
+.tags-box{
+    position: absolute;
+    bottom: 20px; /* Adjust this value as needed */
+    right: 25px; /* Adjust this value as needed */
+    display: flex;
+    align-items: center;
+    justify-content: start;
+    background: transparent;
+    font-size: 2rem;
+    color: white;
+    font-weight: bold;
+    font-family: sans-serif;
+    min-width: 60px;
+    border: 2px solid white;
+    border-radius: 1rem;
+}
+
+.tags-main{
+    background: transparent;
+    font-size: 1.4rem;
+    font-weight: lighter;
+    padding: 0.2rem 1rem 0.2rem 0.5rem;
+}
+
+.logo-text{
+    padding: 1rem;
+    font-size: 2.5rem;
+    font-style: italic;
+    font-weight: bolder;
+}
+
+.header-container{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.menu {
+    list-style-type: none; /* Remove default list styles */
+    display: flex; /* Use flexbox to make the list items spread horizontally */
+    margin: 0 2rem;
+}
+
+
+.menu li {
+    margin-right: 10px; /* Adjust spacing between menu items */
+}
+
+.menu li:last-child {
+    margin-right: 0; /* Remove margin from last menu item to prevent extra spacing */
+}
+
+.menu li a {
+    text-decoration: none; /* Remove default underline */
+    color: #333; /* Set text color */
+    display: flex; /* Use flexbox to center text content */
+    align-items: center; /* Center text content vertically */
+    justify-content: center; /* Center text content horizontally */
+    padding: 10px 15px; /* Add padding to each menu item */
+    border-radius: 5px; /* Add border radius for rounded corners */
+    background-color: #f0f0f0; /* Add background color for menu items */
+    transition: background-color 0.3s; /* Add transition effect for hover */
+}
+
+.menu li a:hover {
+    background-color: #ddd; /* Change background color on hover */
+}

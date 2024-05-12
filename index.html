@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" type="text/css" href="/css/style.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Work+Sans:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+    <title>Home</title>
+  </head>
+  <body>
+    <header class="header-container">
+      <h1 class="logo-text">Oleblog</h1>
+      <nav>
+        <ul class="menu">
+          <li>
+            <a href="login.html">Home</a>
+          </li>
+          <li>
+            <a href="login.html">Contact</a>
+          </li>
+          <li>
+            <a href="login.html">Support</a>
+          </li>
+        </ul>
+      </nav>
+    </header>
+    <hr class="line">
+    <p class="newest-text">Newest Posts!</p>
+    <div class="carousel-container">
+        <div class="carousel-wrapper">
+            <div class="blog-container" id="top-posts"></div>
+        </div>
+        <div class="slider-container">
+            <button class="prev-btn">&lt;</button>
+            <button class="next-btn">&gt;</button>
+        </div>
+        <h2 id="blogName"></h2>
+    </div>
+    <hr class="line">
+    <div id="posts"></div>
+    <div class="make-post">
+      <button id="show-button">Make</button>
+      <div id="create-show" class="post-container">
+        <h2>Create a New Post</h2>
+        <div>
+          <label for="title">Title:</label>
+          <input type="text" id="title" placeholder="Enter title" />
+        </div>
+        <div>
+          <label for="body">Body:</label>
+          <textarea id="body" placeholder="Enter body"></textarea>
+        </div>
+        <div>
+          <label for="tags">Tags:</label>
+          <input type="text" id="tags" placeholder="Enter tags" />
+        </div>
+        <div>
+          <label for="media-url">Media URL:</label>
+          <input type="text" id="media-url" placeholder="Enter media URL" />
+        </div>
+        <div>
+          <label for="media-alt">Media Alt Text:</label>
+          <input
+            type="text"
+            id="media-alt"
+            placeholder="Enter media alt text"
+          />
+        </div>
+        <button id="create-post-btn">Create Post</button>
+      </div>
+    </div>
+    <footer>
+      <nav>
+        <ul>
+          <li>
+            <a href="login.html">Home</a>
+          </li>
+          <li>
+            <a href="login.html">Contact</a>
+          </li>
+          <li>
+            <a href="login.html">Support</a>
+          </li>
+          <li>
+            <a id="clearStorage" href="login.html">Login</a>
+          </li>
+        </ul>
+      </nav>
+      <p class="copyright">© 2024 Blogole. All rights reserved.</p>
+    </footer>
+    <script defer src="script.js"></script>
+  </body>
+</html>
