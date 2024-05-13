@@ -6,6 +6,7 @@
     <link rel="stylesheet" type="text/css" href="/css/style.css" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <link
       href="https://fonts.googleapis.com/css2?family=Work+Sans:ital,wght@0,100..900;1,100..900&display=swap"
       rel="stylesheet"
@@ -51,8 +52,10 @@
         </p>
       </div>
     </div>
+    <br />
     <hr class="line" />
-    <p class="newest-text">All the Posts</p>
+    <br />
+    <p class="all-post-text">All the Posts</p>
     <br />
     <p id="blogName"></p>
     <div class="posts-main-container">
@@ -89,7 +92,9 @@
         <button id="create-post-btn">Create Post</button>
       </div>
     </div>
+    <br />
     <hr class="line" />
+    <br />
     <div class="subscribe-container">
       <p class="follow-text">Follow the Loop!</p>
       <p class="follow-info-text">
@@ -97,13 +102,20 @@
         your inbox. Stay informed, inspired, and engaged with content relevant
         to [your blog niche/industry].
       </p>
-      <div>
-        <input type="text"><button>Sunscribe</button>
+      <div class="subscribe-box">
+        <input
+          class="input-box"
+          type="text"
+          placeholder="Enter your email address"
+        /><button class="sub-btn">Subscribe</button>
       </div>
     </div>
+    <br />
+    <hr class="line" />
+    <br />
     <footer class="footer-container">
       <nav>
-        <ul>
+        <ul class="footer-menu">
           <li>
             <a href="login.html">Home</a>
           </li>
@@ -118,6 +130,34 @@
           </li>
         </ul>
       </nav>
+      <br>
+      <br>
+      <div class="social-box">
+        <a
+          href="https://www.twitch.tv"
+          title="link til twitch social"
+          class="linkcard"
+          ><i class="fab fa-twitch"></i
+        ></a>
+        <a
+          href="https://www.facebook.com"
+          title="link til facebook social"
+          class="linkcard"
+          ><i class="fab fa-facebook"></i
+        ></a>
+        <a
+          href="https://www.youtube.com"
+          title="link til youtube social"
+          class="linkcard"
+          ><i class="fab fa-youtube"></i
+        ></a>
+        <a
+          href="https://www.instagram.com"
+          title="link til instagram social"
+          class="linkcard"
+          ><i class="fab fa-instagram"></i
+        ></a>
+      </div>
       <p class="copyright">© 2024 Blogole. All rights reserved.</p>
     </footer>
     <script defer src="script.js"></script>

@@ -92,6 +92,14 @@ body{
   grid-column: 1;
 }
 
+.all-post-text{
+  font-style: italic;
+  font-weight: lighter;
+  font-size: 2rem;
+  display: flex;
+  justify-content: center;
+}
+
 .line {
   margin: 1rem;
   color: #c6bdb6;
@@ -211,14 +219,17 @@ body{
   padding: 10px 15px; /* Add padding to each menu item */
   font-size: 1.3rem;
   text-decoration: none;
+  font-weight: bolder;
+  font-style: italic;
 }
 
-.menu li a:hover,.read-more-main:hover{
+.menu li a:hover,.read-more-main:hover,.footer-menu li a:hover{
   text-decoration: underline;
   cursor: pointer;
 }
 
 .box {
+  justify-self: center;
   margin: 0 1rem;
   padding: 1rem;
   display: grid;
@@ -284,7 +295,7 @@ body{
 }
 
 .prev-btn:hover,
-.next-btn:hover {
+.next-btn:hover ,.sub-btn{
   cursor: pointer;
 }
 
@@ -373,4 +384,87 @@ body{
 
 .footer-container{
   background-color: #4B3737;
+  padding: 1rem 3rem;
+  display: flex;
+  flex-direction: column;
+}
+
+.follow-text{
+  font-size: 1.5rem;
+  font-weight: bolder;
+  padding: 1rem;
+}
+
+.follow-info-text{
+  padding: 1rem;
+  font-weight: bolder
+}
+
+.subscribe-container{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.subscribe-box{
+  padding: 1rem;
+}
+
+.input-box{
+  background-color: #f3efe2;
+  border: 2px solid #c6bdb6;
+  color: #c6bdb6;
+  font-size: 1.3rem;
+  padding: 0.5rem;
+  font-style: italic;
+  width: 500px;
+}
+
+.sub-btn{
+  font-size: 1.3rem;
+  background-color: #4B3737;
+  border: 2px solid #4B3737;
+  color: white;
+  padding: 0.5rem;
+  font-style: italic;
+}
+
+.footer-menu{
+  display: flex;
+  justify-content: space-between;
+  padding: 1rem;
+  list-style: none;
+  color: white;
+}
+
+.footer-menu li a{
+  text-decoration: none;
+  color: white;
+  font-size: 1.3rem;
+  font-style: italic;
+  font-weight: bolder;
+}
+
+.social-box{
+  display: flex;
+  background-color: #f3efe2;
+  width: fit-content;
+  margin: 2rem auto;
+}
+
+.linkcard{
+  display: flex;
+  padding: 1rem;
+  color: black;
+  font-size: 1.5rem;
+  width: 120px;
+  justify-content: center;
+  text-decoration: none;
+}
+
+.copyright{
+  display: flex;
+  justify-content: end;
+  font-size: 0.8rem;
+  color: white;
 }
