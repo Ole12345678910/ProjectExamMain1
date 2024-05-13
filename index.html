@@ -14,11 +14,11 @@
   </head>
   <body>
     <header class="header-container">
-      <h1 class="logo-text">Oleblog</h1>
+      <h1 class="logo-text">Blogole</h1>
       <nav>
         <ul class="menu">
           <li>
-            <a href="login.html">Home</a>
+            <a href="index.html">Home</a>
           </li>
           <li>
             <a href="login.html">Contact</a>
@@ -37,6 +37,10 @@
       <div class="carousel-wrapper">
         <div class="blog-container" id="top-posts"></div>
       </div>
+      <div class="slider-container">
+        <button class="prev-btn">&lt;</button>
+        <button class="next-btn">&gt;</button>
+      </div>
       <div class="box">
         <div class="circle"></div>
         <p class="author-text">Author: ole123</p>
@@ -47,13 +51,13 @@
         </p>
       </div>
     </div>
-    <div class="slider-container">
-      <button class="prev-btn">&lt;</button>
-      <button class="next-btn">&gt;</button>
-    </div>
     <hr class="line" />
-    <h2 id="blogName"></h2>
-    <div id="posts"></div>
+    <p class="newest-text">All the Posts</p>
+    <br />
+    <p id="blogName"></p>
+    <div class="posts-main-container">
+      <div id="posts"></div>
+    </div>
     <div class="make-post">
       <button id="show-button">Make</button>
       <div id="create-show" class="post-container">
@@ -85,7 +89,19 @@
         <button id="create-post-btn">Create Post</button>
       </div>
     </div>
-    <footer>
+    <hr class="line" />
+    <div class="subscribe-container">
+      <p class="follow-text">Follow the Loop!</p>
+      <p class="follow-info-text">
+        Never miss an update! Subscribe to receive our latest posts directly in
+        your inbox. Stay informed, inspired, and engaged with content relevant
+        to [your blog niche/industry].
+      </p>
+      <div>
+        <input type="text"><button>Sunscribe</button>
+      </div>
+    </div>
+    <footer class="footer-container">
       <nav>
         <ul>
           <li>

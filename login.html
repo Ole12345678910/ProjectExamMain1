@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="/css/style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Work+Sans:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+    <title>Home</title>
+</head>
+<body>
+    <header class="header-container">
+        <h1 class="logo-text">Oleblog</h1>
+        <nav>
+            <ul class="menu">
+                <li>
+                    <a href="login.html">Home</a>
+                </li>
+                <li>
+                    <a href="login.html">Contact</a>
+                </li>
+                <li>
+                    <a href="login.html">Support</a>
+                </li>
+            </ul>
+        </nav>
+    </header>
+    <hr class="line">
+    <div id="login-container">
+        <h2>Login</h2>
+        <p id="content"></p>
+        <form id="login-form">
+          <label for="email">Email:</label>
+          <input type="text" id="email" name="email" required /><br /><br />
+          <label for="password">Password:</label>
+          <input
+            type="password"
+            id="password"
+            name="password"
+            required
+          /><br /><br />
+          <button type="button" onclick="loginUser()">Login</button>
+        </form>
+        <p id="error-message" style="color: red"></p>
+      </div>
+    <footer class="footer-container">
+        <nav>
+            <ul>
+                <li>
+                    <a href="login.html">Home</a>
+                </li>
+                <li>
+                    <a href="login.html">Contact</a>
+                </li>
+                <li>
+                    <a href="login.html">Support</a>
+                </li>
+                <li>
+                    <a id="clearStorage" href="login.html">Login</a>
+                </li>
+            </ul>
+        </nav>
+        <p class="copyright">© 2024 Blogole. All rights reserved.</p>
+    </footer>
+    <script defer src="login.js"></script>
+</body>
+</html>

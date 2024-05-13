@@ -174,7 +174,7 @@ function createCarousel(postsData, container) {
                 </div>
             </div>
             <div class="tags-box">
-                <p class="tags-main">${tags}</p>
+                <p class="tags">${tags}</p>
             </div>
             <p class="title-text">${title}</p>
           </div>
@@ -191,16 +191,11 @@ function createCarousel(postsData, container) {
   }
 }
 
-// Function to create the second set of posts
-function createSecondPosts(postsData, container) {
-  // Implement this function similarly to createCarousel, but with different logic if needed
-}
 
 function initializeCarousel() {
   const prevButton = document.querySelector(".prev-btn");
   const nextButton = document.querySelector(".next-btn");
   const carouselWrapper = document.querySelector(".carousel-wrapper");
-  const postContainer = document.querySelector(".blog-container");
   const postCards = document.querySelectorAll(".post");
   let currentIndex = 0;
   const cardWidth =
@@ -209,29 +204,36 @@ function initializeCarousel() {
 
   const moveAmount = 1; // Adjust this value as needed
 
-  nextButton.addEventListener("click", function () {
+  function updateCarousel() {
+    postCards.forEach((card, index) => {
+      card.style.transform = `translateX(-${currentIndex}px)`;
+    });
+  }
+
+  function moveNext() {
     currentIndex += moveAmount * cardWidth; // Increment by moveAmount * cardWidth
     if (currentIndex >= postCards.length * cardWidth) {
       // Check if currentIndex exceeds total width
       currentIndex = 0; // Reset currentIndex to start
     }
     updateCarousel();
-  });
+  }
 
-  prevButton.addEventListener("click", function () {
+  function movePrev() {
     currentIndex -= moveAmount * cardWidth; // Decrement by moveAmount * cardWidth
     if (currentIndex < 0) {
       currentIndex = postCards.length * cardWidth - cardWidth; // Set currentIndex to the end
     }
     updateCarousel();
-  });
-
-  function updateCarousel() {
-    postCards.forEach((card, index) => {
-      card.style.transform = `translateX(-${currentIndex}px)`;
-    });
   }
+
+  nextButton.addEventListener("click", moveNext);
+  prevButton.addEventListener("click", movePrev);
+
+  setInterval(moveNext, 4000); // Auto-scroll every 4 seconds
 }
+
+
 
 /*other posts*/
 
@@ -261,12 +263,17 @@ fetchApi(myApiKey)
 
         // Create HTML elements for each post
         const postElement = document.createElement("div");
-        postElement.classList.add("post");
+        postElement.classList.add("post-main");
         postElement.innerHTML = `
             <div class="blog-card-main">
-              <img src="${media}" alt="${media.alt}" class="post-image-big">
-              <p class="tags">${tags}</p>
-              <h2>${title}</h2>
+              <img src="${media}" alt="${media.alt}" class="post-image-main">
+              <div class="info-box">
+                <p class="title-main">${title}</p>
+                <p class="read-more-main">Read more</p>
+                <div class="tags-main-box">
+                  <p class="tags-main">${tags}</p>
+                </div>
+              </div>
             </div>
           `;
 
