@@ -1,68 +1,115 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" type="text/css" href="/css/style.css">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Work+Sans:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" type="text/css" href="/css/style.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
+      integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Work+Sans:ital,wght@0,100..900;1,100..900&display=swap"
+      rel="stylesheet"
+    />
     <title>Home</title>
-</head>
-<body>
+  </head>
+  <body>
     <header class="header-container">
-        <h1 class="logo-text">Oleblog</h1>
-        <nav>
-            <ul class="menu">
-                <li>
-                    <a href="index.html">Home</a>
-                </li>
-                <li>
-                    <a href="login.html">Contact</a>
-                </li>
-                <li>
-                    <a href="login.html">Support</a>
-                </li>
-            </ul>
-        </nav>
+      <h1 class="logo-text">Oleblog</h1>
+      <nav>
+        <ul class="menu">
+          <li>
+            <a href="index.html">Home</a>
+          </li>
+          <li>
+            <a href="login.html">Contact</a>
+          </li>
+          <li>
+            <a href="login.html">Support</a>
+          </li>
+        </ul>
+      </nav>
     </header>
-    <hr class="line">
+    <hr class="line" />
     <div id="login-container">
-        <h2>Login</h2>
+      <img
+        class="img-login"
+        src="assest/modern-office-desk-composition-with-technological-device.jpg"
+        alt="img of an desk"
+      />
+      <div class="login-box">
+        <h2 class="login-text">Login</h2>
         <p id="content"></p>
         <form id="login-form">
-          <label for="email">Email:</label>
+          <label class="email-box" for="email">Email:</label>
           <input type="text" id="email" name="email" required /><br /><br />
-          <label for="password">Password:</label>
+          <label class="password-box" for="password">Password:</label>
           <input
             type="password"
             id="password"
             name="password"
             required
           /><br /><br />
-          <button type="button" onclick="loginUser()">Login</button>
+          <button class="login-button" type="button" onclick="loginUser()">
+            Login
+          </button>
         </form>
         <p id="error-message" style="color: red"></p>
       </div>
+    </div>
     <footer class="footer-container">
-        <nav>
-            <ul>
-                <li>
-                    <a href="index.html">Home</a>
-                </li>
-                <li>
-                    <a href="login.html">Contact</a>
-                </li>
-                <li>
-                    <a href="login.html">Support</a>
-                </li>
-                <li>
-                    <a id="clearStorage" href="login.html">Login</a>
-                </li>
-            </ul>
-        </nav>
-        <p class="copyright">© 2024 Blogole. All rights reserved.</p>
+      <nav>
+        <ul class="footer-menu">
+          <li>
+            <a href="login.html">Home</a>
+          </li>
+          <li>
+            <a href="login.html">Contact</a>
+          </li>
+          <li>
+            <a href="login.html">Support</a>
+          </li>
+          <li>
+            <a id="clearStorage" href="login.html">Login</a>
+          </li>
+        </ul>
+      </nav>
+      <br />
+      <br />
+      <div class="social-box">
+        <a
+          href="https://www.twitch.tv"
+          title="link til twitch social"
+          class="linkcard"
+          ><i class="fab fa-twitch"></i
+        ></a>
+        <a
+          href="https://www.facebook.com"
+          title="link til facebook social"
+          class="linkcard"
+          ><i class="fab fa-facebook"></i
+        ></a>
+        <a
+          href="https://www.youtube.com"
+          title="link til youtube social"
+          class="linkcard"
+          ><i class="fab fa-youtube"></i
+        ></a>
+        <a
+          href="https://www.instagram.com"
+          title="link til instagram social"
+          class="linkcard"
+          ><i class="fab fa-instagram"></i
+        ></a>
+      </div>
+      <p class="copyright">© 2024 Blogole. All rights reserved.</p>
     </footer>
     <script defer src="login.js"></script>
-</body>
+  </body>
 </html>
