@@ -198,7 +198,7 @@ function initializeCarousel() {
   const carouselWrapper = document.querySelector(".carousel-wrapper");
   const postCards = document.querySelectorAll(".post");
   let currentIndex = 0;
-  const cardWidth =
+  let cardWidth =
     postCards[0].offsetWidth +
     parseInt(getComputedStyle(postCards[0]).marginRight);
 
@@ -230,7 +230,16 @@ function initializeCarousel() {
   nextButton.addEventListener("click", moveNext);
   prevButton.addEventListener("click", movePrev);
 
-  setInterval(moveNext, 4000); // Auto-scroll every 4 seconds
+  setInterval(moveNext, 4000000); // Auto-scroll every 4 seconds
+
+  // Resize event listener
+  window.addEventListener("resize", () => {
+    cardWidth =
+      postCards[0].offsetWidth +
+      parseInt(getComputedStyle(postCards[0]).marginRight);
+    currentIndex = currentIndex % (postCards.length * cardWidth);
+    updateCarousel();
+  });
 }
 
 

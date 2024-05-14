@@ -75,7 +75,6 @@ body{
   grid-template-rows: 400px;
   padding: 0 2rem;
   justify-content: space-evenly;
-
 }
 
 /*new code stying old behind*/
@@ -103,10 +102,16 @@ body{
   justify-content: center;
 }
 
-.line {
+.line-header {
   margin: 1rem;
   color: #c6bdb6;
 }
+
+.line{
+  margin: 3rem 1rem;
+  color: #c6bdb6;
+}
+
 .text-box {
   position: absolute;
   bottom: 20px; /* Adjust this value as needed */
@@ -245,12 +250,18 @@ body{
 
 .circle{
   display: flex;
-  background-color: white;
   width: 130px;
   height: 130px;
   border-radius: 100%;
   align-self: center;
   justify-self: start;
+}
+
+.img-box{
+  object-fit: cover;
+  width: 130px;
+  height: 130px;
+  border-radius: 100%;
 }
 
 .author-text{
@@ -449,11 +460,11 @@ body{
   font-weight: bolder;
 }
 
-.social-box{
+.social-box {
   display: flex;
   background-color: #f3efe2;
-  width: fit-content;
   margin: 2rem auto;
+  max-width: 100%;
 }
 
 .linkcard{
@@ -532,6 +543,25 @@ body{
   transition: ease 0.2s;
 }
 
+.hamburger-menu{
+  display: none;
+  font-size: 2rem;
+  display: flex;
+}
+
+.hamburger-menu i{
+  display: flex;
+  align-items: center;
+  align-self: center;
+  justify-content: center;
+  justify-self: center;
+}
+
+.hamburger{
+  display: flex;
+  justify-content: end;
+}
+
 @media (max-width: 1050px) {
   .carousel-container{
     display: flex;
@@ -539,6 +569,22 @@ body{
     align-items: center;
   }
   .carousel-wrapper{
-    height: 400px;
+    max-width: 500px;
+  }
+  .post{
+    max-width: 500px;
+  }
+  .blog-card{
+    max-width: 500px;
+  }
+  .slider-container{
+    max-width: 550px;
+  }
+  .menu{
+    display: none;
+  }
+  .hamburger-menu{
+    display: block;
+    
   }
 }
