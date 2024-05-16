@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" type="text/css" href="/css/style.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
+      integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Work+Sans:ital,wght@0,100..900;1,100..900&display=swap"
+      rel="stylesheet"
+    />
+    <title>Details</title>
+  </head>
+  <body>
+    <header class="header-container">
+      <h1 class="logo-text">Blogole</h1>
+      <nav class="hamburger">
+        <ul class="menu">
+          <li>
+            <a href="index.html">Home</a>
+          </li>
+          <li>
+            <a href="login.html">Contact</a>
+          </li>
+          <li>
+            <a href="login.html">Support</a>
+          </li>
+        </ul>
+      </nav>
+      <div class="hamburger-menu">
+        <i class="fa-solid fa-bars"></i>
+      </div>
+      <nav id="navbar" class="navbar">
+        <ul>
+          <li><a href="index.html">Home</a></li>
+          <li><a href="login.html">Contact</a></li>
+          <li><a href="login.html">Support</a></li>
+        </ul>
+      </nav>
+    </header>
+    <hr class="line-header" />
+    <div id="posts"></div>
+    <div class="button-container">
+      <button id="edit-post-btn">Edit Post</button>
+      <button id="delete-post-btn">Delete Post</button>
+      <button id="save-edit-btn">Save</button>
+      <div id="edit-show" class="post-container">
+        <p>Edit Post</p>
+        <div>
+          <label for="title">Title:</label>
+          <input type="text" id="title" placeholder="Enter title" />
+        </div>
+        <div>
+          <label for="body">Body:</label>
+          <textarea id="body" placeholder="Enter body"></textarea>
+        </div>
+        <div>
+          <label for="tags">Tags:</label>
+          <input type="text" id="tags" placeholder="Enter tags" />
+        </div>
+        <div>
+          <label for="media-url">Media URL:</label>
+          <input type="text" id="media-url" placeholder="Enter media URL" />
+        </div>
+        <div>
+          <label for="media-alt">Media Alt Text:</label>
+          <input
+            type="text"
+            id="media-alt"
+            placeholder="Enter media alt text"
+          />
+        </div>
+      </div>
+    </div>
+    <footer class="footer-container">
+      <nav>
+        <ul class="footer-menu">
+          <li>
+            <a href="index.html">Home</a>
+          </li>
+          <li>
+            <a href="login.html">Contact</a>
+          </li>
+          <li>
+            <a href="login.html">Support</a>
+          </li>
+          <li>
+            <a id="clearStorage" href="login.html">Login</a>
+          </li>
+        </ul>
+      </nav>
+      <br />
+      <br />
+      <div class="social-box">
+        <a
+          href="https://www.twitch.tv"
+          title="link til twitch social"
+          class="linkcard"
+          ><i class="fab fa-twitch"></i
+        ></a>
+        <a
+          href="https://www.facebook.com"
+          title="link til facebook social"
+          class="linkcard"
+          ><i class="fab fa-facebook"></i
+        ></a>
+        <a
+          href="https://www.youtube.com"
+          title="link til youtube social"
+          class="linkcard"
+          ><i class="fab fa-youtube"></i
+        ></a>
+        <a
+          href="https://www.instagram.com"
+          title="link til instagram social"
+          class="linkcard"
+          ><i class="fab fa-instagram"></i
+        ></a>
+      </div>
+      <p class="copyright">© 2024 Blogole. All rights reserved.</p>
+    </footer>
+    <script defer src="details.js"></script>
+  </body>
+</html>
