@@ -1,3 +1,8 @@
+const myApiKey = "5794466a-ac21-441f-8a55-385e2fda14c7"; // Define your API key
+// Export the function
+// Export the function
+export { toggleNavbar };
+
 // Define the fetchApi function
 async function fetchApi(apiKey) {
   const options = {
@@ -26,30 +31,25 @@ async function fetchApi(apiKey) {
 
 const API_BASE_URL = "https://v2.api.noroff.dev/";
 
-const BlogName = localStorage.getItem("name");
-
 // Function to show buttons based on certain conditions (e.g., after login)
 function showButton() {
-  // Check if user is logged in (example: check if access token exists in localStorage)
   const accessToken = localStorage.getItem("accessToken");
   const BlogName = localStorage.getItem("name");
 
   if (accessToken) {
-    // User is logged in, show the buttons
     document.getElementById("show-button").style.display = "inline-block";
     document.getElementById("blogName").innerHTML = "Welcome " + BlogName;
   } else {
-    // User is not logged in, buttons remain hidden (display: none;)
     // Optionally, you can choose to do something else here (e.g., redirect to login page)
   }
 }
 
+// Event listener for button click
 document.addEventListener("DOMContentLoaded", () => {
   const showButton = document.getElementById("show-button");
   const createShow = document.getElementById("create-show");
 
   showButton.addEventListener("click", () => {
-    // Toggle the visibility of the create-show element
     createShow.style.display =
       createShow.style.display === "none" ? "block" : "none";
   });
@@ -58,6 +58,7 @@ document.addEventListener("DOMContentLoaded", () => {
 // Call the showButtons function when the page loads
 showButton();
 
+// Function to create a new post
 async function createPost(token, postData) {
   try {
     const response = await fetch(`${API_BASE_URL}blog/posts/ole123`, {
@@ -74,7 +75,7 @@ async function createPost(token, postData) {
     }
 
     const responseData = await response.json();
-    console.log("Post created successfully:", responseData);
+    alert("Post created successfully:", responseData);
     return responseData; // Return the created post data if needed
   } catch (error) {
     console.error("Error creating post:", error);
@@ -82,6 +83,7 @@ async function createPost(token, postData) {
   }
 }
 
+// Function to retrieve access token from local storage
 function getTokenFromLocalStorage() {
   const token = localStorage.getItem("accessToken");
   if (!token) {
@@ -90,6 +92,7 @@ function getTokenFromLocalStorage() {
   return token;
 }
 
+// Event listener for create post button click
 document.addEventListener("DOMContentLoaded", () => {
   const createPostBtn = document.getElementById("create-post-btn");
 
@@ -124,15 +127,11 @@ document.addEventListener("DOMContentLoaded", () => {
   });
 });
 
-const myApiKey = "5794466a-ac21-441f-8a55-385e2fda14c7"; // Define your API key
-
 // Fetch data for the first set of posts and create carousel
 fetchApi(myApiKey)
   .then((response) => {
-    console.log("Fetched data:", response);
     const topPostsContainer = document.getElementById("top-posts");
 
-    // Check if response contains data
     if (response && response.data) {
       createCarousel(response.data, topPostsContainer);
       initializeCarousel();
@@ -146,22 +145,16 @@ fetchApi(myApiKey)
 
 // Function to create carousel from fetched data
 function createCarousel(postsData, container) {
-  // Check if response contains data
   if (postsData && Array.isArray(postsData) && postsData.length > 0) {
-    // Sort posts by the 'created' tag (assuming 'created' is a date)
     postsData.sort((a, b) => new Date(b.created) - new Date(a.created));
-
-    // Extract only the top 3 newest posts
     const top3Posts = postsData.slice(0, 3);
 
-    // Iterate through each post object
     top3Posts.forEach((post) => {
       const tags = post.tags;
       const title = post.title;
       const media = post.media.url;
       const postId = post.id || ``;
 
-      // Create HTML elements for each post
       const postElement = document.createElement("div");
       postElement.classList.add("post");
       postElement.innerHTML = `
@@ -182,16 +175,14 @@ function createCarousel(postsData, container) {
       postElement.addEventListener("click", () => {
         window.location.href = `/details.html?id=${postId}`;
       });
-      // Append the post element to the container
       container.appendChild(postElement);
     });
   } else {
-    // Display a message if no data is received
     container.innerHTML = "<p>No posts found.</p>";
   }
 }
 
-
+// Function to initialize carousel
 function initializeCarousel() {
   const prevButton = document.querySelector(".prev-btn");
   const nextButton = document.querySelector(".next-btn");
@@ -202,7 +193,7 @@ function initializeCarousel() {
     postCards[0].offsetWidth +
     parseInt(getComputedStyle(postCards[0]).marginRight);
 
-  const moveAmount = 1; // Adjust this value as needed
+  const moveAmount = 1;
 
   function updateCarousel() {
     postCards.forEach((card, index) => {
@@ -211,18 +202,17 @@ function initializeCarousel() {
   }
 
   function moveNext() {
-    currentIndex += moveAmount * cardWidth; // Increment by moveAmount * cardWidth
+    currentIndex += moveAmount * cardWidth;
     if (currentIndex >= postCards.length * cardWidth) {
-      // Check if currentIndex exceeds total width
-      currentIndex = 0; // Reset currentIndex to start
+      currentIndex = 0;
     }
     updateCarousel();
   }
 
   function movePrev() {
-    currentIndex -= moveAmount * cardWidth; // Decrement by moveAmount * cardWidth
+    currentIndex -= moveAmount * cardWidth;
     if (currentIndex < 0) {
-      currentIndex = postCards.length * cardWidth - cardWidth; // Set currentIndex to the end
+      currentIndex = postCards.length * cardWidth - cardWidth;
     }
     updateCarousel();
   }
@@ -242,22 +232,18 @@ function initializeCarousel() {
   });
 }
 
-
-
-/*other posts*/
-
+// Clear local storage
 const clearStorage = document.getElementById("clearStorage");
 
 clearStorage.addEventListener("click", () => {
   localStorage.clear();
 });
 
+// Fetch and display other posts
 fetchApi(myApiKey)
   .then((response) => {
-    console.log("Fetched data:", response);
     const postsContainer = document.getElementById("posts");
 
-    // Check if response contains data
     if (
       response &&
       response.data &&
@@ -270,11 +256,9 @@ fetchApi(myApiKey)
         const title = post.title;
         const media = post.media.url;
 
-        // Create HTML elements for each post
         const postElement = document.createElement("div");
         postElement.classList.add("post-main");
         postElement.innerHTML = `
-            <div class="blog-card-main">
               <img src="${media}" alt="${media.alt}" class="post-image-main">
               <div class="info-box">
                 <p class="title-main">${title}</p>
@@ -283,19 +267,15 @@ fetchApi(myApiKey)
                   <p class="tags-main">${tags}</p>
                 </div>
               </div>
-            </div>
           `;
 
-        // Add event listener to redirect to details page on click
         postElement.addEventListener("click", () => {
           window.location.href = `/details.html?id=${postId}`;
         });
 
-        // Append the post element to the posts container
         postsContainer.appendChild(postElement);
       });
     } else {
-      // Display a message if no data is received
       postsContainer.innerHTML = "<p>No posts found.</p>";
     }
   })
@@ -303,14 +283,12 @@ fetchApi(myApiKey)
     console.error("Fetch operation failed:", error);
   });
 
+// Function to toggle the navbar
+function toggleNavbar() {
+  const hamburgerMenu = document.querySelector('.hamburger-menu');
+  const navbar = document.querySelector('.navbar');
 
-
-  document.addEventListener("DOMContentLoaded", function() {
-    const hamburgerMenu = document.querySelector('.hamburger-menu');
-    const navbar = document.querySelector('.navbar');
-  
-    hamburgerMenu.addEventListener('click', function() {
-      navbar.classList.toggle('active');
-    });
+  hamburgerMenu.addEventListener('click', function() {
+    navbar.classList.toggle('active');
   });
-  
+}

@@ -56,7 +56,6 @@ function fetchAndRenderPost() {
 
 // Renders the post based on the response data
 function renderPost(response) {
-  console.log("Fetched data:", response);
   const postsContainer = document.getElementById("posts");
 
   if (
@@ -83,20 +82,27 @@ function renderMatchingPost(post, container) {
     const { updated, tags, id, title, body, media, author, created } = post;
     const postLink = `blog.html?id=${id}`;
     const postElement = document.createElement("div");
-    postElement.classList.add("post");
+    postElement.classList.add("post-detail");
     postElement.innerHTML = `
-      <div class="blog-card-big">
         <img src="${media.url}" alt="${media.alt}" class="post-image-big">
         <div class="detail-info-text">
-          <p class="tags">${tags}</p>
-          <p>${title}</p>
-          <p class="body-text">${body}</p>
-          <p>Author: ${author.name}</p>
-          <p>Created: ${new Date(created).toLocaleString()}</p>
-          <p>Updated: ${updated}</p>
-          <button class="share-button" data-post-id="${id}"><i class="fas fa-share"></i></button>
+            <div class="container-holder">
+                <div class="tags-main-box">
+                    <p class="tags-main">${tags}</p>
+                </div>
+                <p class="detail-text1">Created: ${new Date(created).toLocaleString()}</p>
+                <p class="detail-text2">Updated: ${updated}</p>
+            </div>
+            <p class="detail-text3">${title}</p>
+            <p class="detail-text4">${body}</p>
+            <div class="author-box">
+                <img class="img-box2" src="assest/cute-hedgehog-looking-camera-small-fluffy-generated-by-artificial-intelligence.jpg" alt="image of an hedgehog"/>
+                <p class="detail-text5">Author: ${author.name}</p>
+            </div>
+            <button class="share-button" data-post-id="${id}">
+                <i class="fas fa-share"></i>
+            </button>
         </div>
-      </div>
     `;
   
     // Attach event listener to share button
@@ -182,7 +188,7 @@ async function deletePost(token, postId) {
       throw new Error(`Failed to delete post. Status: ${response.status}`);
     }
 
-    console.log("Post deleted successfully");
+    alert("Post deleted successfully");
     // Optionally, redirect or update UI to reflect that the post has been deleted
   } catch (error) {
     console.error("Error deleting post:", error);
@@ -229,7 +235,7 @@ async function updatePost(token, postId, postData) {
       throw new Error(`Failed to save edited post: ${response.statusText}`);
     }
 
-    console.log("Post edited successfully");
+    alert("Post edited successfully");
     // Optionally, handle the response or update the UI
   } catch (error) {
     console.error("Error saving edited post:", error);

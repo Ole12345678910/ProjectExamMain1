@@ -23,8 +23,6 @@ async function loginUser() {
       // Store the access token and name in localStorage
       localStorage.setItem("accessToken", json.data.accessToken);
       localStorage.setItem("name", json.data.name);
-      console.log("Login successful. Access token:", json.data.accessToken);
-
       // Redirect to dashboard or another page upon successful login
       window.location.href = "/index.html";
     } else {
