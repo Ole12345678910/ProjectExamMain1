@@ -492,8 +492,6 @@ body {
 
 /* Footer container styles */
 .footer-container {
-  grid-template-columns: 1fr 1fr 1fr 1fr;
-  grid-template-columns: 1fr 1fr;
   display: grid;
   background-color: var(--main-brown);
   padding: 1rem 3rem;
@@ -887,8 +885,6 @@ body {
     transition: ease 0.3s;
   }
   .post-detail{
-    grid-template-columns: 1fr;
-    grid-template-rows: 1fr 1fr 1fr;
     display: flex;
     flex-direction: column;
     max-width: 350px;
@@ -921,6 +917,9 @@ body {
   }
   .detail-text1{
     margin-left: 1rem;
+  }
+  .logo-text{
+    padding: 1rem;
   }
   .container-holder{
     padding: 1rem 0;
