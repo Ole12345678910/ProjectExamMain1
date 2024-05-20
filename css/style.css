@@ -503,6 +503,8 @@ body {
 
 /* Footer container styles */
 .footer-container {
+  grid-template-columns: 1fr 1fr 1fr 1fr;
+  grid-template-columns: 1fr 1fr;
   display: grid;
   background-color: var(--main-brown);
   padding: 1rem 3rem;
@@ -851,5 +853,37 @@ body {
   }
   #login-container {
     height: 100%;
+  }
+  .footer-container{
+    grid-template-columns: 1fr;
+    grid-template-rows: 6fr;
+  }
+  .find-me-box{
+    grid-row: 2;
+    grid-column: 1;
+  }
+  .touch-box{
+    grid-row: 3;
+    grid-column: 1;
+  }
+  .logo-text-footer{
+    grid-row: 1;
+    grid-column: 1;
+  }
+  .social-box{
+    grid-row: 4;
+    grid-column: 1;
+  }
+  .login-footer{
+    grid-row: 5;
+    grid-column: 1;
+  }
+  .copyright{
+    grid-row: 6;
+    grid-column: 1;
+  }
+  #blogName{
+    margin: 1rem;
+    font-size: 1.3rem;
   }
 }
