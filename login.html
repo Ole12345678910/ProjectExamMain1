@@ -21,36 +21,16 @@
   </head>
   <body>
     <header class="header-container">
-      <h1 class="logo-text">Blogole</h1>
-      <nav class="hamburger">
-        <ul class="menu">
-          <li>
-            <a href="index.html">Home</a>
-          </li>
-          <li>
-            <a href="login.html">Contact</a>
-          </li>
-          <li>
-            <a href="login.html">Support</a>
-          </li>
-        </ul>
-      </nav>
-      <div class="hamburger-menu">
-        <i class="fa-solid fa-bars"></i>
-      </div>
-      <nav id="navbar" class="navbar">
-        <ul>
-          <li><a href="index.html">Home</a></li>
-          <li><a href="login.html">Contact</a></li>
-          <li><a href="login.html">Support</a></li>
-        </ul>
-      </nav>
+      <h1 class="logo-text" onclick="window.location.href = 'index.html';">
+        Blogole
+      </h1>
+      <p id="blogName"></p>
     </header>
     <hr class="line-header" />
     <div id="login-container">
       <img
         class="img-login"
-        src="assest/modern-office-desk-composition-with-technological-device.jpg"
+        src="assest/amazing-shot-old-wooden-boat-reflective-lake.jpg"
         alt="img of an desk"
       />
       <div class="login-box">
@@ -74,52 +54,68 @@
       </div>
     </div>
     <footer class="footer-container">
-      <nav>
-        <ul class="footer-menu">
-          <li>
-            <a href="index.html">Home</a>
-          </li>
-          <li>
-            <a href="login.html">Contact</a>
-          </li>
-          <li>
-            <a href="login.html">Support</a>
-          </li>
-          <li>
-            <a id="clearStorage" href="login.html">Login</a>
-          </li>
-        </ul>
-      </nav>
-      <br />
-      <br />
-      <div class="social-box">
-        <a
-          href="https://www.twitch.tv"
-          title="link til twitch social"
-          class="linkcard"
-          ><i class="fab fa-twitch"></i
-        ></a>
-        <a
-          href="https://www.facebook.com"
-          title="link til facebook social"
-          class="linkcard"
-          ><i class="fab fa-facebook"></i
-        ></a>
-        <a
-          href="https://www.youtube.com"
-          title="link til youtube social"
-          class="linkcard"
-          ><i class="fab fa-youtube"></i
-        ></a>
-        <a
-          href="https://www.instagram.com"
-          title="link til instagram social"
-          class="linkcard"
-          ><i class="fab fa-instagram"></i
-        ></a>
-      </div>
+      <p class="logo-text-footer">Blogole</p>
+      <section class="find-me-box">
+        <p class="top-main-text">Find me.</p>
+        <p class="find-me-text">
+          Connect with me: Reach out, share your thoughts, or simply say hello.
+          I'm here to listen and engage with fellow readers and writers. Let's
+          connect and make this journey together.
+        </p>
+      </section>
+      <section class="touch-box">
+        <p class="top-main-text">Let's stay in touch.</p>
+        <p class="touch-text">
+          Let's stay in touch: Whether you have feedback, questions, or just
+          want to chat, I'm always eager to connect with my readers. Drop me a
+          line and let's start a conversation
+        </p>
+      </section>
+      <a id="login-logout-btn" class="login-footer">Login</a>
       <p class="copyright">© 2024 Blogole. All rights reserved.</p>
+      <section class="social-box">
+        <p class="top-main-text">Follow me.</p>
+        <div class="link-box">
+          <a
+            href="https://www.twitch.tv"
+            title="link to Twitch"
+            class="linkcard"
+            ><i class="fab fa-twitch"></i
+          ></a>
+          <p>Twitch</p>
+        </div>
+        <div class="link-box">
+          <a
+            href="https://www.facebook.com"
+            title="link to Facebook"
+            class="linkcard"
+            ><i class="fab fa-facebook"></i
+          ></a>
+          <p>Facebook</p>
+        </div>
+        <div class="link-box">
+          <a
+            href="https://www.youtube.com"
+            title="link to YouTube"
+            class="linkcard"
+            ><i class="fab fa-youtube"></i
+          ></a>
+          <p>Youtube</p>
+        </div>
+        <div class="link-box">
+          <a
+            href="https://www.instagram.com"
+            title="link to Instagram"
+            class="linkcard"
+            ><i class="fab fa-instagram"></i
+          ></a>
+          <p>Instagram</p>
+        </div>
+        <p class="footer-info">
+          This page was crafted with determination and precision.
+        </p>
+      </section>
     </footer>
-    <script type="module" defer src="login.js"></script>
+    <script defer src="login.js"></script>
   </body>
 </html>

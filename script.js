@@ -1,35 +1,4 @@
-const myApiKey = "5794466a-ac21-441f-8a55-385e2fda14c7"; // Define your API key
-// Export the function
-// Export the function
-export { toggleNavbar };
-
-// Define the fetchApi function
-async function fetchApi(apiKey) {
-  const options = {
-    headers: {
-      Authorization: `Bearer ${apiKey}`,
-    },
-  };
-
-  try {
-    const response = await fetch(
-      "https://v2.api.noroff.dev/blog/posts/ole123",
-      options
-    );
-
-    if (!response.ok) {
-      throw new Error(`HTTP error! Status: ${response.status}`);
-    }
-
-    const data = await response.json();
-    return data;
-  } catch (error) {
-    console.error("Error fetching API data:", error);
-    throw error;
-  }
-}
-
-const API_BASE_URL = "https://v2.api.noroff.dev/";
+import { fetchApi, myApiKey, API_BASE_URL } from "./api.js";
 
 // Function to show buttons based on certain conditions (e.g., after login)
 function showButton() {
@@ -44,7 +13,7 @@ function showButton() {
   }
 }
 
-// Event listener for button click
+// Event listener for button click to toggle visibility of create post section
 document.addEventListener("DOMContentLoaded", () => {
   const showButton = document.getElementById("show-button");
   const createShow = document.getElementById("create-show");
@@ -55,7 +24,7 @@ document.addEventListener("DOMContentLoaded", () => {
   });
 });
 
-// Call the showButtons function when the page loads
+// Call the showButton function when the page loads
 showButton();
 
 // Function to create a new post
@@ -92,7 +61,7 @@ function getTokenFromLocalStorage() {
   return token;
 }
 
-// Event listener for create post button click
+// Event listener for create post button click to handle post creation
 document.addEventListener("DOMContentLoaded", () => {
   const createPostBtn = document.getElementById("create-post-btn");
 
@@ -122,7 +91,6 @@ document.addEventListener("DOMContentLoaded", () => {
       alert("Post created successfully!");
     } catch (error) {
       console.error("Error creating post:", error);
-      alert("Failed to create post. Please try again.");
     }
   });
 });
@@ -186,7 +154,6 @@ function createCarousel(postsData, container) {
 function initializeCarousel() {
   const prevButton = document.querySelector(".prev-btn");
   const nextButton = document.querySelector(".next-btn");
-  const carouselWrapper = document.querySelector(".carousel-wrapper");
   const postCards = document.querySelectorAll(".post");
   let currentIndex = 0;
   let cardWidth =
@@ -220,7 +187,7 @@ function initializeCarousel() {
   nextButton.addEventListener("click", moveNext);
   prevButton.addEventListener("click", movePrev);
 
-  setInterval(moveNext, 4000000); // Auto-scroll every 4 seconds
+  setInterval(moveNext, 4000); // Auto-scroll every 4 seconds
 
   // Resize event listener
   window.addEventListener("resize", () => {
@@ -231,13 +198,6 @@ function initializeCarousel() {
     updateCarousel();
   });
 }
-
-// Clear local storage
-const clearStorage = document.getElementById("clearStorage");
-
-clearStorage.addEventListener("click", () => {
-  localStorage.clear();
-});
 
 // Fetch and display other posts
 fetchApi(myApiKey)
@@ -283,12 +243,37 @@ fetchApi(myApiKey)
     console.error("Fetch operation failed:", error);
   });
 
-// Function to toggle the navbar
-function toggleNavbar() {
-  const hamburgerMenu = document.querySelector('.hamburger-menu');
-  const navbar = document.querySelector('.navbar');
+// Function to toggle between login and logout
+function toggleLoginLogout() {
+  const accessToken = localStorage.getItem("accessToken");
 
-  hamburgerMenu.addEventListener('click', function() {
-    navbar.classList.toggle('active');
-  });
+  if (accessToken) {
+    // If logged in, perform logout actions
+    localStorage.clear(); // Clear local storage
+    window.location.href = "/index.html"; // Redirect to index page
+  } else {
+    // If not logged in, redirect to the login page
+    window.location.href = "/login.html";
+  }
 }
+
+// Function to check if the user is logged in
+function checkLoginStatus() {
+  const accessToken = localStorage.getItem("accessToken");
+  const loginButton = document.getElementById("login-logout-btn");
+
+  if (accessToken) {
+    // If logged in, change button text to "Logout" and add event listener
+    loginButton.textContent = "Logout";
+    loginButton.addEventListener("click", toggleLoginLogout);
+  } else {
+    // If not logged in, keep button text as "Login" and add event listener
+    loginButton.textContent = "Login";
+    loginButton.addEventListener("click", () => {
+      window.location.href = "/login.html";
+    });
+  }
+}
+
+// Call checkLoginStatus function when the page loads
+document.addEventListener("DOMContentLoaded", checkLoginStatus);

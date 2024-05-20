@@ -1,3 +1,4 @@
+/* Global styles */
 * {
   margin: 0;
   padding: 0;
@@ -5,15 +6,26 @@
 }
 
 :root {
-  --tags-color: rgb(117, 99, 99); /* Define primary color variable */
-  --main-brown: #4b3737;
+  --tags-color: #3a3a3a; /* Dark gray */
+  --main-brown: #445566; /* Dark brown */
+  --main-beige: #ececec; /* White */
+  --main-dark-beige: #d3d3d3; /* Light gray */
+  --main-black: black; /* Black */
+  --main-white: white; /* White */
+}
+
+/*
+:root {
+  --tags-color: #645555; 
+  --main-brown: #5f4a46;
   --main-beige: #f3efe2;
   --main-dark-beige: #c6bdb6;
   --main-black: black;
-  --main-white: white;
+  --main-white: white; 
 }
+*/
 
-
+/* Body styles */
 body {
   background-color: var(--main-beige);
   min-height: 100vh;
@@ -21,14 +33,14 @@ body {
   flex-direction: column;
 }
 
+/* Hide certain buttons */
+#show-button,
+#edit-show,
 #create-show {
   display: none;
 }
 
-#show-button {
-  display: none;
-}
-
+/* Post detail styles */
 .post-detail {
   margin: 2rem 4rem;
   line-height: 2rem;
@@ -36,24 +48,13 @@ body {
   display: flex;
 }
 
-
 .post-image-big {
   height: 100%;
   object-fit: cover;
   max-width: 700px;
 }
 
-#edit-show {
-  display: none;
-}
-
-#edit-show {
-  display: none;
-}
-
-/*--------------------------------------*/
-
-/* Ensure images are displayed at their intrinsic dimensions */
+/* Common post styles */
 .post-image {
   width: 100%;
   height: 400px;
@@ -62,7 +63,7 @@ body {
 
 .post {
   width: 700px;
-  transition: transform 0.5s ease;
+  transition: transform 0.3s ease; /* CSS transition for smooth animation */
 }
 
 .blog-container {
@@ -70,16 +71,13 @@ body {
   height: 400px;
 }
 
+/* Carousel styles */
 .carousel-wrapper {
   max-width: 700px;
   height: 400px;
   overflow: hidden;
-  display: flex; /* Ensure items remain in a row */
+  display: flex;
   justify-self: center;
-}
-
-.blog-container {
-  flex-shrink: 0; /* Prevent items from shrinking */
 }
 
 .carousel-container {
@@ -90,15 +88,16 @@ body {
   justify-content: space-evenly;
 }
 
-/*new code stying old behind*/
-
+/* Text container styles */
 .text-container {
   display: grid;
   margin: 1rem;
   grid-template-columns: 1fr 1fr;
 }
 
-.newest-text {
+/* Text styles */
+.newest-text,
+.all-post-text {
   font-style: italic;
   font-weight: lighter;
   font-size: 2rem;
@@ -107,17 +106,9 @@ body {
   grid-column: 1;
 }
 
-.all-post-text {
-  font-style: italic;
-  font-weight: lighter;
-  font-size: 2rem;
-  display: flex;
-  justify-content: center;
-}
-
 .line-header {
-  margin: 1rem;
   color: var(--main-dark-beige);
+  margin: 1rem;
 }
 
 .line {
@@ -125,22 +116,24 @@ body {
   color: var(--main-dark-beige);
 }
 
+/* Text box styles */
 .text-box {
   position: absolute;
-  bottom: 20px; /* Adjust this value as needed */
-  left: 20px; /* Adjust this value as needed */
+  bottom: 20px;
+  left: 20px;
   display: flex;
   align-items: center;
   justify-content: start;
   background: transparent;
 }
 
+/* Read more button styles */
 .read-more {
   background-color: transparent;
   color: var(--main-white);
   font-size: 1.4rem;
   font-family: sans-serif;
-  padding: 10px 20px; /* Adjust padding as needed */
+  padding: 10px 20px;
   border: 2px solid;
   cursor: pointer;
   transition: background-color 0.3s;
@@ -151,25 +144,32 @@ body {
   background-color: rgba(255, 255, 255, 0.233);
 }
 
+/* Blog card styles */
 .blog-card {
   position: relative;
   overflow: hidden;
 }
 
+/* Gradient overlay styles */
 .gradient-overlay {
   position: absolute;
   top: 0;
   left: 0;
   width: 100%;
   height: 400px;
-  background: linear-gradient(to bottom, rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.603));
-  pointer-events: none; /* Ensures the overlay doesn't block interactions with underlying content */
+  background: linear-gradient(
+    to bottom,
+    rgba(0, 0, 0, 0),
+    rgba(0, 0, 0, 0.603)
+  );
+  pointer-events: none;
 }
 
+/* Title text styles */
 .title-text {
   position: absolute;
-  bottom: 80px; /* Adjust this value as needed */
-  left: 20px; /* Adjust this value as needed */
+  bottom: 80px;
+  left: 20px;
   display: flex;
   align-items: center;
   justify-content: start;
@@ -178,83 +178,71 @@ body {
   color: var(--main-white);
   font-weight: bold;
   font-family: sans-serif;
+  font-style: italic;
 }
 
-
-
+/* Logo text styles */
 .logo-text {
-  padding: 1rem;
+  width: fit-content;
+  padding: 1rem 4rem;
   font-size: 2.5rem;
   font-style: italic;
   font-weight: bolder;
   color: var(--main-black);
 }
 
-a .logo-text{
-  text-decoration: none!important;
+.logo-text-footer {
+  padding: 1rem;
+  font-size: 2.5rem;
+  color: var(--main-white);
+  font-style: italic;
+  font-weight: bolder;
 }
 
+/* Header container styles */
 .header-container {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
+  display: flex;
   align-items: center;
+  justify-content: space-between;
 }
 
-.menu {
-  display: flex; /* Display menu items horizontally */
-  list-style-type: none; /* Remove bullet points */
-  margin-right: 1rem; /* Remove default padding */
-  justify-content: space-between; /* Align menu items to the end of the header */
-}
-
-.menu li {
-  margin-left: 20px; /* Add spacing between menu items */
-}
-
-.menu li:first-child {
-  margin-left: 0; /* Remove margin from the first menu item */
-}
-
-.menu li a {
-  color: var(--main-black);
-  display: flex; /* Use flexbox to center text content */
-  align-items: center; /* Center text content vertically */
-  justify-content: center; /* Center text content horizontally */
-  padding: 10px 15px; /* Add padding to each menu item */
-  font-size: 1.3rem;
-  text-decoration: none;
+#blogName {
+  margin: 1rem 3rem;
+  font-size: 1.5rem;
   font-weight: bolder;
   font-style: italic;
 }
 
-.menu li a:hover,
-.read-more-main:hover,
-.footer-menu li a:hover {
+/* Read more main styles */
+.read-more-main:hover {
   text-decoration: underline;
   cursor: pointer;
 }
 
+/* Box styles */
 .box {
   justify-self: center;
   margin: 0 1rem;
   padding: 2rem;
   display: grid;
-  grid-template-columns: 1fr 1fr;
   background-color: var(--main-brown);
   max-width: 550px;
   max-height: 400px;
-  box-sizing: border-box;
 }
 
+.circle-box {
+  display: flex;
+}
 
+/* Image box styles */
 .img-box {
   display: flex;
-  width: 130px;
-  height: 130px;
+  width: 90px;
+  height: 90px;
   border-radius: 100%;
   align-self: center;
-  justify-self: start;
   object-fit: cover;
+  margin-right: 1rem;
 }
 
 .img-box2 {
@@ -264,13 +252,14 @@ a .logo-text{
   border-radius: 100%;
 }
 
-.author-box{
+/* Author box styles */
+.author-box {
   display: flex;
   grid-row: 4;
   align-items: center;
 }
 
-.author-box .detail-text5{
+.author-box .detail-text5 {
   font-size: 1rem;
   align-self: center;
   padding-left: 1rem;
@@ -278,7 +267,6 @@ a .logo-text{
 
 .author-text {
   display: flex;
-  margin-left: 0.5rem;
   justify-self: start;
   font-size: 1.5rem;
   align-self: center;
@@ -286,14 +274,16 @@ a .logo-text{
   font-style: italic;
 }
 
+/* Info text styles */
 .info-text {
   grid-column: 1/3;
   line-height: 2rem;
   color: var(--main-white);
   font-style: italic;
-  font-size: 1.3rem;
+  font-size: 1.1rem;
 }
 
+/* Slider container styles */
 .slider-container {
   grid-row: 2;
   justify-content: space-between;
@@ -303,9 +293,10 @@ a .logo-text{
   width: 750px;
   justify-self: center;
   background: transparent;
-  overflow: hidden; /* Ensures buttons are not shown initially */
+  overflow: hidden;
 }
 
+/* Previous and next button styles */
 .prev-btn,
 .next-btn {
   background-color: rgba(0, 0, 0, 0.514);
@@ -315,34 +306,40 @@ a .logo-text{
   border: none;
   border-radius: 100%;
   font-size: 2rem;
-  opacity: 0; /* Initially hidden */
-  transition: opacity 0.3s ease; /* Smooth transition */
+  opacity: 0;
+  transition: opacity 0.3s ease;
 }
 
 .prev-btn:hover,
 .next-btn:hover,
 .sub-btn,
-.login-button:hover ,.share-button:hover{
+.login-button:hover,
+.share-button:hover,
+.login-footer:hover,
+.logo-text:hover,
+#show-button,
+#create-post-btn {
   cursor: pointer;
 }
 
+/* Show previous and next buttons on hover */
 .carousel-wrapper:hover + .slider-container .prev-btn,
 .carousel-wrapper:hover + .slider-container .next-btn,
 .slider-container:hover .prev-btn,
 .slider-container:hover .next-btn {
-  opacity: 1; /* Show buttons on hover */
+  opacity: 1;
 }
 
-
+/* Read more main styles */
 .read-more-main {
   grid-row: 2;
   grid-column: 1;
-  font-style: italic;
-  font-size: 1.3rem;
+  font-size: 1.1rem;
   margin-top: 1rem;
   text-decoration: none;
 }
 
+/* Title main styles */
 .title-main {
   grid-row: 1;
   grid-column: 1;
@@ -350,24 +347,28 @@ a .logo-text{
   font-style: italic;
 }
 
+/* Post image main styles */
 .post-image-main {
   width: 100%;
   height: 260px;
   object-fit: cover;
 }
 
+/* Main posts container styles */
 .posts-main-container {
   display: flex;
-  justify-content: center; /* Center items horizontally */
-  margin: 0; /* Remove any default margins */
+  justify-content: center;
+  margin: 0;
 }
 
+/* Posts container styles */
 #posts {
   display: flex;
   flex-wrap: wrap;
-  justify-content: center; /* Align items to the left */
+  justify-content: center;
 }
 
+/* Main post styles */
 .post-main {
   margin: 2rem;
   width: 300px;
@@ -375,11 +376,13 @@ a .logo-text{
   background-color: var(--main-brown);
 }
 
+/* Hover effect on main posts */
 .post-main:hover {
   opacity: 0.9;
   cursor: pointer;
 }
 
+/* Info box styles */
 .info-box {
   background-color: var(--main-brown);
   padding: 1rem;
@@ -390,6 +393,7 @@ a .logo-text{
   grid-row: 1fr 1fr 1fr;
 }
 
+/* Main tags box styles */
 .tags-main-box {
   display: flex;
   align-self: flex-start;
@@ -405,11 +409,11 @@ a .logo-text{
   margin-right: 1rem;
 }
 
-
+/* Additional tags box styles */
 .tags-box {
   position: absolute;
-  bottom: 20px; /* Adjust this value as needed */
-  right: 25px; /* Adjust this value as needed */
+  bottom: 20px;
+  right: 25px;
   display: flex;
   font-size: 2rem;
   font-weight: bold;
@@ -424,96 +428,223 @@ a .logo-text{
   justify-content: center;
 }
 
-
-.footer-container {
-  background-color: var(--main-brown);
-  padding: 1rem 3rem;
-  min-height: 100%;
-  margin-top: auto;
-}
-
-
+/* Follow text styles */
 .follow-text {
   font-size: 1.5rem;
   font-weight: bolder;
   padding: 1rem;
+  font-style: italic;
 }
 
+/* Follow info text styles */
 .follow-info-text {
   padding: 1rem;
   font-weight: bolder;
   text-align: center;
 }
 
+/* Subscribe container styles */
 .subscribe-container {
   display: flex;
   flex-direction: column;
   align-items: center;
 }
 
+/* Subscribe box styles */
 .subscribe-box {
   padding: 1rem;
 }
 
+/* Input box styles */
 .input-box {
   background-color: var(--main-beige);
   border: 2px solid var(--main-dark-beige);
   color: var(--main-dark-beige);
-  font-size: 1.3rem;
+  font-size: 1rem;
   padding: 0.5rem;
   font-style: italic;
-  max-width: 500px;
+  font-weight: bolder;
 }
 
+/* Subscribe button styles */
 .sub-btn {
-  font-size: 1.3rem;
+  font-size: 1rem;
   background-color: var(--main-brown);
   border: 2px solid var(--main-brown);
   color: var(--main-white);
   padding: 0.5rem;
   font-style: italic;
+  font-weight: bolder;
 }
 
-.footer-menu {
-  display: flex;
-  justify-content: space-between;
+.find-me-box {
+  grid-row: 1;
+  grid-column: 3;
+  max-width: 250px;
+  justify-self: center;
+  color: var(--main-white);
+  line-height: 2rem;
+  font-size: 1rem;
+  margin: 1rem;
   padding: 1rem;
-  list-style: none;
-  color: var(--main-white);
 }
 
-.footer-menu li a {
-  text-decoration: none;
+.touch-box {
+  grid-row: 1;
+  grid-column: 2;
+  max-width: 250px;
+  justify-self: center;
   color: var(--main-white);
+  line-height: 2rem;
+  margin: 1rem;
+  padding: 1rem;
+  font-size: 1rem;
+}
+
+/* Footer container styles */
+.footer-container {
+  display: grid;
+  background-color: var(--main-brown);
+  padding: 1rem 3rem;
+  min-height: 100%;
+  margin-top: auto;
+}
+
+.make-post {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 0 auto;
+  padding: 2rem;
+  width: 400px;
+}
+
+#show-button {
+  width: 200px;
+  height: 40px;
+  background-color: var(--main-brown);
+  border: none;
+  font-size: 1rem;
+  color: var(--main-white);
+  margin-bottom: 1rem; /* Adjust as needed */
+}
+
+.button-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  align-self: center;
+  width: 400px;
+  padding: 1rem;
+}
+
+.create-text {
+  text-align: center;
+  padding: 1rem 0;
+}
+
+.title-box input,
+.body-box textarea,
+.tags-box-create input,
+.media-box input,
+.alt-box input {
+  display: flex;
+  width: 100%;
+  margin: 0.5rem 0;
+}
+
+#create-post-btn,
+#edit-post-btn,
+#delete-post-btn,
+#save-edit-btn {
+  background-color: var(--main-brown);
+  color: var(--main-white);
+  font-size: 1rem;
+  border: none;
+  margin: 1rem 0;
+  width: 100%;
+  height: 40px;
+  cursor: pointer;
+}
+
+#delete-post-btn {
+  background-color: rgb(212, 0, 0);
+}
+
+#save-edit-btn {
+  background-color: rgb(5, 112, 5);
+}
+
+.post-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+}
+
+.login-footer {
+  color: var(--main-white);
+  text-decoration: none;
+  height: fit-content;
+  grid-column: 4;
+  grid-row: 2;
+  justify-self: end;
+  font-size: 0.8rem;
+}
+
+.footer-info {
+  margin-top: 1rem;
+  font-size: 0.8rem;
+  max-width: 250px;
+}
+
+.top-main-text {
   font-size: 1.3rem;
   font-style: italic;
   font-weight: bolder;
 }
 
+/* Social box styles */
 .social-box {
-  display: flex;
-  background-color: var(--main-beige);
-  width: fit-content;
-  margin: 2rem auto;
-}
-
-.linkcard {
-  display: flex;
+  color: var(--main-white);
   padding: 1rem;
-  color: var(--main-black);
-  font-size: 1.5rem;
-  width: 120px;
-  justify-content: center;
-  text-decoration: none;
+  grid-column: 4;
+  grid-row: 1;
+  justify-self: center;
+  font-size: 1rem;
+  margin: 1rem;
 }
 
-.copyright {
+/* Link card styles */
+.linkcard {
+  padding: 0.7rem;
+  color: var(--main-white);
+  text-decoration: none;
+  border: solid 2px;
+  border-radius: 0.5rem;
   display: flex;
-  justify-content: end;
-  font-size: 0.8rem;
+  justify-content: center;
+  align-items: center;
+  width: 15px;
+  height: 15px;
+  margin-right: 0.7rem;
+}
+.link-box {
+  margin-top: 0.5rem;
+  display: flex;
+  align-items: center;
   color: var(--main-white);
 }
 
+/* Copyright text styles */
+.copyright {
+  font-size: 0.7rem;
+  color: var(--main-white);
+  grid-row: 2;
+  height: fit-content;
+}
+
+/* Login container styles */
 #login-container {
   align-self: center;
   display: flex;
@@ -523,28 +654,31 @@ a .logo-text{
   height: 400px;
 }
 
+/* Login image styles */
 .img-login {
-  width: 50%; /* Adjust this value as needed */
+  width: 50%;
   max-width: 500px;
   height: auto;
   object-fit: cover;
 }
 
+/* Login box styles */
 .login-box {
   padding: 1rem 2rem;
   display: flex;
   flex-direction: column;
-  width: 50%; /* Adjust this value as needed */
+  width: 50%;
   max-width: 100%;
 }
 
-
+/* Login text styles */
 .login-text {
   margin-bottom: 1rem;
   color: var(--main-white);
   font-style: italic;
 }
 
+/* Email and password box styles */
 .email-box,
 .password-box {
   color: var(--main-white);
@@ -554,6 +688,7 @@ a .logo-text{
   margin: 0.2rem;
 }
 
+/* Email and password input styles */
 #password,
 #email {
   background-color: var(--main-white);
@@ -562,11 +697,13 @@ a .logo-text{
   padding: 0.2rem;
 }
 
+/* Login form styles */
 #login-form {
   display: flex;
   flex-direction: column;
 }
 
+/* Login button styles */
 .login-button {
   padding: 0.5rem;
   width: 100%;
@@ -580,77 +717,7 @@ a .logo-text{
   transition: ease 0.2s;
 }
 
-.hamburger-menu {
-  display: none;
-  display: flex;
-}
-
-.hamburger-menu i {
-  display: flex;
-  justify-content: end;
-  font-size: 2rem;
-  margin: 1rem 1.5rem 1rem 1rem;
-}
-
-.hamnburger {
-  display: flex;
-  align-items: center;
-}
-
-.hamburger-menu {
-  display: none;
-  transition: ease 3s;
-}
-
-/* Hide the navbar by default */
-.navbar {
-  display: none;
-}
-
-/* Show the navbar when it's active */
-.navbar.active {
-  display: block;
-}
-
-/* Style the hamburger menu icon */
-.hamburger-menu {
-  font-size: 24px;
-  color: var(--main-black);
-  cursor: pointer;
-}
-
-/* Styling for the navbar */
-.navbar {
-  display: none;
-  position: absolute;
-  top: 90px; /* Adjust as needed */
-  right: 0;
-  width: 50%;
-  background-color: var(--main-dark-beige);
-  z-index: 1000; /* Ensure the navbar appears above other content */
-}
-
-/* Styling for the menu items */
-.navbar a {
-  font-weight: bolder;
-  font-style: italic;
-  text-align: center;
-  display: block;
-  padding: 15px 20px; /* Adjust padding as needed */
-  text-decoration: none;
-  color: var(--main-black);
-  font-size: 1rem;
-  transition: background-color 0.3s; /* Smooth transition for hover effect */
-}
-
-.navbar ul li {
-  list-style-type: none;
-}
-
-.navbar a:hover {
-  background-color: var(--main-beige);
-}
-
+/* Share button styles */
 .share-button {
   grid-column: 2;
   grid-row: 4;
@@ -660,31 +727,33 @@ a .logo-text{
   justify-self: end;
 }
 
-.detail-info-text{
+/* Detail info text styles */
+.detail-info-text {
   display: grid;
   line-height: 2.5rem;
   padding: 1rem 2rem;
-  grid-template-columns: min-content; /* Adjust based on your content width */
-  grid-template-rows: max-content; /* Adjust based on your content height */
+  grid-template-columns: min-content;
+  grid-template-rows: max-content;
 }
 
-.detail-text3{
+/* Detail text 3 styles */
+.detail-text3 {
   font-size: 2rem;
   font-style: italic;
   font-weight: bolder;
   align-self: end;
 }
 
-.detail-text4{
+/* Detail text 4 styles */
+.detail-text4 {
   grid-row: 3;
   line-height: 2.5rem;
   grid-column: 1/3;
   max-width: 500px;
 }
 
-
-
-.container-holder{
+/* Container holder styles */
+.container-holder {
   display: flex;
   grid-row: 1;
   grid-column: 1/3;
@@ -692,38 +761,50 @@ a .logo-text{
   align-items: center;
 }
 
-.container-holder .detail-text2{
+.container-holder .detail-text2 {
   margin-left: 1rem;
 }
 
-
-/* Your existing CSS */
-
+/* Responsive styles */
 @media (max-width: 1050px) {
   .carousel-container {
     display: flex;
     flex-direction: column;
     align-items: center;
   }
-  .carousel-wrapper {
-    max-width: 500px;
-  }
-  .post {
-    max-width: 500px;
-  }
-  .blog-card {
+  .carousel-wrapper,
+  .post,
+  .blog-car {
     max-width: 500px;
   }
   .slider-container {
     max-width: 550px;
   }
-  .menu {
-    display: none;
+  .find-me-box {
+    grid-column: 1;
+    grid-row: 2;
   }
-  .hamburger-menu {
-    display: block;
-    grid-row: 1;
+  .social-box {
     grid-column: 2;
+    grid-row: 3;
+  }
+  .touch-box {
+    grid-row: 2;
+  }
+  .copyright {
+    grid-row: 3;
+    grid-column: 1;
+  }
+  .login-footer {
+    grid-column: 2;
+    grid-row: 4;
+  }
+  .logo-text {
+    grid-row: 1;
+    grid-column: 1;
+  }
+  .copyright {
+    grid-row: 4;
   }
 }
 
@@ -739,8 +820,8 @@ a .logo-text{
     bottom: 180px;
   }
   .tags-box {
-    bottom: 20px; /* Adjust this value as needed */
-    right: 10px; /* Adjust this value as needed */
+    bottom: 20px;
+    right: 10px;
   }
   .newest-text {
     grid-column: 1/3;
@@ -749,24 +830,26 @@ a .logo-text{
     max-width: 200px;
     font-size: 1rem;
   }
-  .sub-btn ,.footer-menu li a,.tags {
+  .sub-btn,
+  .footer-menu li a,
+  .tags {
     font-size: 1rem;
   }
-  #login-container{
+  #login-container {
     flex-direction: column;
   }
-  .login-box{
+  .login-box {
     align-self: center;
     padding: 1rem;
   }
-  .img-login{
+  .img-login {
     width: 100%;
   }
-  .post-image{
+  .post-image {
     width: 100%;
     height: 300px;
   }
-  #login-container{
+  #login-container {
     height: 100%;
   }
 }
