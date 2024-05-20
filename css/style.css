@@ -919,4 +919,9 @@ body {
   .button-container{
     width: 300px;
   }
+  .detail-info-text{
+    padding: 0.5rem;
+    width: 100%;
+    justify-content: center;
+  }
 }
