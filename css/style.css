@@ -916,8 +916,11 @@ body {
     grid-row: 4;
     grid-column: 1;
   }
-  .button-container{
+  .button-container,.detail-text4{
     width: 300px;
+  }
+  .container-holder{
+    padding: 1rem 0;
   }
   .detail-info-text{
     padding: 0.5rem;
