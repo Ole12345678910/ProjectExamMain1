@@ -14,17 +14,6 @@
   --main-white: white; /* White */
 }
 
-/*
-:root {
-  --tags-color: #645555; 
-  --main-brown: #5f4a46;
-  --main-beige: #f3efe2;
-  --main-dark-beige: #c6bdb6;
-  --main-black: black;
-  --main-white: white; 
-}
-*/
-
 /* Body styles */
 body {
   background-color: var(--main-beige);
@@ -342,7 +331,7 @@ body {
 /* Title main styles */
 .title-main {
   grid-row: 1;
-  grid-column: 1;
+  grid-column: 1/3;
   font-size: 1.5rem;
   font-style: italic;
 }

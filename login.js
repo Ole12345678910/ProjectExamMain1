@@ -38,3 +38,37 @@ async function loginUser() {
 }
 
 
+// Function to toggle between login and logout
+function toggleLoginLogout() {
+  const accessToken = localStorage.getItem("accessToken");
+
+  if (accessToken) {
+    // If logged in, perform logout actions
+    localStorage.clear(); // Clear local storage
+    window.location.href = "/index.html"; // Redirect to index page
+  } else {
+    // If not logged in, redirect to the login page
+    window.location.href = "/login.html";
+  }
+}
+
+// Function to check if the user is logged in
+function checkLoginStatus() {
+  const accessToken = localStorage.getItem("accessToken");
+  const loginButton = document.getElementById("login-logout-btn");
+
+  if (accessToken) {
+    // If logged in, change button text to "Logout" and add event listener
+    loginButton.textContent = "Logout";
+    loginButton.addEventListener("click", toggleLoginLogout);
+  } else {
+    // If not logged in, keep button text as "Login" and add event listener
+    loginButton.textContent = "Login";
+    loginButton.addEventListener("click", () => {
+      window.location.href = "/login.html";
+    });
+  }
+}
+
+// Call checkLoginStatus function when the page loads
+document.addEventListener("DOMContentLoaded", checkLoginStatus);
