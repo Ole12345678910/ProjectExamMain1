@@ -919,8 +919,12 @@ body {
   .button-container,.detail-text4{
     width: 300px;
   }
+  .detail-text1{
+    margin-left: 1rem;
+  }
   .container-holder{
     padding: 1rem 0;
+    align-items: start;
   }
   .detail-info-text{
     padding: 0.5rem;
