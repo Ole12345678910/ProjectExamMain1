@@ -42,7 +42,7 @@ function renderMatchingPost(post, container) {
   postElement.innerHTML = `
     <img src="${media.url}" alt="${media.alt}" class="post-image-big">
     <div class="detail-info-text">
-      <div class="container-holder">
+      <section class="container-holder">
         <div class="tags-main-box">
           <p class="tags-main">${tags}</p>
         </div>
@@ -50,13 +50,13 @@ function renderMatchingPost(post, container) {
           created
         ).toLocaleString()}</p>
         <p class="detail-text2">Updated: ${updated}</p>
-      </div>
+      </section>
       <p class="detail-text3">${title}</p>
       <p class="detail-text4">${body}</p>
-      <div class="author-box">
+      <aside class="author-box">
         <img class="img-box2" src="assest/cute-hedgehog-looking-camera-small-fluffy-generated-by-artificial-intelligence.jpg" alt="image of a hedgehog"/>
         <p class="detail-text5">Author: ${author.name}</p>
-      </div>
+      </aside>
       <button class="share-button" data-post-id="${id}">
         <i class="fas fa-share"></i>
       </button>

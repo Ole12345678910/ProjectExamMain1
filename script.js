@@ -126,19 +126,19 @@ function createCarousel(postsData, container) {
       const postElement = document.createElement("div");
       postElement.classList.add("post");
       postElement.innerHTML = `
-          <div class="blog-card">
-            <div class="image-container">
-                <div class="gradient-overlay"></div>
-                <img src="${media}" alt="${media.alt}" class="post-image">
-                <div class="text-box">
-                    <p class="read-more">Read more</p>
-                </div>
-            </div>
-            <div class="tags-box">
-                <p class="tags">${tags}</p>
-            </div>
-            <p class="title-text">${title}</p>
-          </div>
+          <article class="blog-card">
+          <figure class="image-container">
+            <div class="gradient-overlay"></div>
+            <img src="${media}" alt="${media.alt}" class="post-image">
+            <figcaption class="text-box">
+              <p class="read-more">Read more</p>
+            </figcaption>
+          </figure>
+          <section class="tags-box">
+            <p class="tags">${tags}</p>
+          </section>
+          <p class="title-text">${title}</p>
+        </article>
         `;
       postElement.addEventListener("click", () => {
         window.location.href = `/details.html?id=${postId}`;
@@ -219,14 +219,16 @@ fetchApi(myApiKey)
         const postElement = document.createElement("div");
         postElement.classList.add("post-main");
         postElement.innerHTML = `
+              <figure class="post-image-main-container">
               <img src="${media}" alt="${media.alt}" class="post-image-main">
-              <div class="info-box">
-                <p class="title-main">${title}</p>
+              <figcaption class="info-box">
+                <h2 class="title-main">${title}</h2>
                 <p class="read-more-main">Read more</p>
-                <div class="tags-main-box">
+                <section class="tags-main-box">
                   <p class="tags-main">${tags}</p>
-                </div>
-              </div>
+                </section>
+              </figcaption>
+            </figure>      
           `;
 
         postElement.addEventListener("click", () => {
