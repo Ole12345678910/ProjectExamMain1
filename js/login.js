@@ -48,7 +48,7 @@ function toggleLoginLogout() {
     window.location.href = "/index.html"; // Redirect to index page
   } else {
     // If not logged in, redirect to the login page
-    window.location.href = "/login.html";
+    window.location.href = "/account/login.html";
   }
 }
 
@@ -65,7 +65,7 @@ function checkLoginStatus() {
     // If not logged in, keep button text as "Login" and add event listener
     loginButton.textContent = "Login";
     loginButton.addEventListener("click", () => {
-      window.location.href = "/login.html";
+      window.location.href = "/account/login.html";
     });
   }
 }

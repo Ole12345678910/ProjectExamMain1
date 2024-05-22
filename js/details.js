@@ -1,5 +1,19 @@
 import { fetchApi, myApiKey } from "./api.js";
 
+// Function to show buttons based on certain conditions (e.g., after login)
+function showButton() {
+  const accessToken = localStorage.getItem("accessToken");
+  const BlogName = localStorage.getItem("name");
+
+  if (accessToken) {
+    document.getElementById("blogName").innerHTML = "Welcome " + BlogName;
+  } else {
+    // Optionally, you can choose to do something else here (e.g., redirect to login page)
+  }
+}
+
+showButton();
+
 // Update the visibility of edit and delete buttons based on token existence
 function updateButtonsVisibility() {
   const token = localStorage.getItem("accessToken");
