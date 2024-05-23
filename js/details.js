@@ -7,7 +7,7 @@ import {
 } from "./utility.js";
 
 // Update the visibility of edit and delete buttons based on token existence
-function updateButtonsVisibility() {
+function ButtonShow() {
   const token = localStorage.getItem("accessToken");
   const editPostBtn = document.getElementById("edit-post-btn");
   const deletePostBtn = document.getElementById("delete-post-btn");
@@ -99,7 +99,7 @@ function getPostIdFromURL() {
 }
 
 // Toggle element visibility
-function toggleElementVisibility(element) {
+function elementShow(element) {
   element.style.display =
     element.style.display === "none" || element.style.display === ""
       ? "block"
@@ -108,7 +108,7 @@ function toggleElementVisibility(element) {
 
 // Initial setup
 document.addEventListener("DOMContentLoaded", () => {
-  updateButtonsVisibility();
+  ButtonShow();
   fetchAndRenderPost();
 
   const deletePostBtn = document.getElementById("delete-post-btn");
@@ -133,7 +133,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
 const editButton = document.getElementById("edit-post-btn");
 const editForm = document.getElementById("edit-show");
-editButton.addEventListener("click", () => toggleElementVisibility(editForm));
+editButton.addEventListener("click", () => elementShow(editForm));
 
 const saveEditBtn = document.getElementById("save-edit-btn");
 saveEditBtn.style.display = localStorage.getItem("accessToken")

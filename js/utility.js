@@ -121,7 +121,7 @@ export async function createPost(token, postData) {
 }
 
 // Function to retrieve access token from local storage
-export function getTokenFromLocalStorage() {
+export function tokenLocalStor() {
   const token = localStorage.getItem("accessToken");
   if (!token) {
     throw new Error("No access token found in local storage");
@@ -179,13 +179,13 @@ export async function updatePost(token, postId, postData) {
 }
 
 // Create post button
-export function handleCreatePostButtonClick() {
+export function postButton() {
   document.addEventListener("DOMContentLoaded", () => {
     const createPostBtn = document.getElementById("create-post-btn");
 
     createPostBtn.addEventListener("click", async () => {
       try {
-        const token = getTokenFromLocalStorage();
+        const token = tokenLocalStor();
         const title = document.getElementById("title").value;
         const body = document.getElementById("body").value;
         const tags = document

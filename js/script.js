@@ -3,7 +3,7 @@ import {
   toggleLoginLogout,
   checkLoginStatus,
   initializeCarousel,
-  handleCreatePostButtonClick,
+  postButton,
 } from "./utility.js";
 
 function showButton() {
@@ -26,7 +26,7 @@ document.addEventListener("DOMContentLoaded", () => {
   });
 });
 
-handleCreatePostButtonClick();
+postButton();
 
 // Fetch data for the first set of posts and create carousel
 fetchApi(myApiKey)

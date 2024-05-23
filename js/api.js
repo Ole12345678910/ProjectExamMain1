@@ -2,10 +2,10 @@
 export const myApiKey = "5794466a-ac21-441f-8a55-385e2fda14c7";
 
 // Define and export the fetchApi function
-export async function fetchApi(apiKey) {
+export async function fetchApi(myApiKey) {
     const options = {
       headers: {
-        Authorization: `Bearer ${apiKey}`,
+        Authorization: `Bearer ${myApiKey}`,
       },
     };
   
