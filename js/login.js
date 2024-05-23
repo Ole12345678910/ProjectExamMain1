@@ -1,6 +1,8 @@
-const API_BASE_URL = "https://v2.api.noroff.dev/";
+// Import other necessary functions and variables
+import { toggleLoginLogout, checkLoginStatus, API_BASE_URL } from './utility.js';
 
-async function loginUser() {
+// Define loginUser function in the global scope
+window.loginUser = async function loginUser() {
   const email = document.getElementById("email").value;
   const password = document.getElementById("password").value;
 
@@ -37,38 +39,9 @@ async function loginUser() {
   }
 }
 
-
-// Function to toggle between login and logout
-function toggleLoginLogout() {
-  const accessToken = localStorage.getItem("accessToken");
-
-  if (accessToken) {
-    // If logged in, perform logout actions
-    localStorage.clear(); // Clear local storage
-    window.location.href = "/index.html"; // Redirect to index page
-  } else {
-    // If not logged in, redirect to the login page
-    window.location.href = "/account/login.html";
-  }
-}
-
-// Function to check if the user is logged in
-function checkLoginStatus() {
-  const accessToken = localStorage.getItem("accessToken");
-  const loginButton = document.getElementById("login-logout-btn");
-
-  if (accessToken) {
-    // If logged in, change button text to "Logout" and add event listener
-    loginButton.textContent = "Logout";
-    loginButton.addEventListener("click", toggleLoginLogout);
-  } else {
-    // If not logged in, keep button text as "Login" and add event listener
-    loginButton.textContent = "Login";
-    loginButton.addEventListener("click", () => {
-      window.location.href = "/account/login.html";
-    });
-  }
-}
-
 // Call checkLoginStatus function when the page loads
 document.addEventListener("DOMContentLoaded", checkLoginStatus);
+
+// Use toggleLoginLogout function when a logout button is clicked
+const logoutButton = document.getElementById("login-logout-btn");
+logoutButton.addEventListener("click", toggleLoginLogout);

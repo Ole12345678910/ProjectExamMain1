@@ -1,6 +1,3 @@
-// Base URL for the API
-export const API_BASE_URL = "https://v2.api.noroff.dev/";
-
 // Define your API key
 export const myApiKey = "5794466a-ac21-441f-8a55-385e2fda14c7";
 

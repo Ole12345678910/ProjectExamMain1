@@ -41,6 +41,7 @@ body {
   line-height: 2rem;
   background-color: var(--main-light-gray);
   display: flex;
+  min-height: 600px;
 }
 
 .post-image-big {
