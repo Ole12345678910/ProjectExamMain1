@@ -1,21 +1,13 @@
 import { fetchApi, myApiKey } from "./api.js";
-
-// Function to show buttons based on certain conditions (e.g., after login)
-function showButton() {
-  const accessToken = localStorage.getItem("accessToken");
-  const BlogName = localStorage.getItem("name");
-
-  if (accessToken) {
-    document.getElementById("blogName").innerHTML = "Welcome " + BlogName;
-  } else {
-    // Optionally, you can choose to do something else here (e.g., redirect to login page)
-  }
-}
-
-showButton();
+import {
+  toggleLoginLogout,
+  checkLoginStatus,
+  deletePost,
+  updatePost,
+} from "./utility.js";
 
 // Update the visibility of edit and delete buttons based on token existence
-function updateButtonsVisibility() {
+function ButtonShow() {
   const token = localStorage.getItem("accessToken");
   const editPostBtn = document.getElementById("edit-post-btn");
   const deletePostBtn = document.getElementById("delete-post-btn");
@@ -106,57 +98,8 @@ function getPostIdFromURL() {
   return new URLSearchParams(window.location.search).get("id");
 }
 
-// Delete a post
-async function deletePost(token, postId) {
-  try {
-    const response = await fetch(
-      `https://v2.api.noroff.dev/blog/posts/ole123/${postId}`,
-      {
-        method: "DELETE",
-        headers: {
-          Authorization: `Bearer ${token}`,
-        },
-      }
-    );
-
-    if (!response.ok) {
-      throw new Error(`Failed to delete post. Status: ${response.status}`);
-    }
-
-    alert("Post deleted successfully");
-  } catch (error) {
-    console.error("Error deleting post:", error);
-    throw error;
-  }
-}
-
-// Update the post on the server
-async function updatePost(token, postId, postData) {
-  try {
-    const response = await fetch(
-      `https://v2.api.noroff.dev/blog/posts/ole123/${postId}`,
-      {
-        method: "PUT",
-        headers: {
-          "Content-Type": "application/json",
-          Authorization: `Bearer ${token}`,
-        },
-        body: JSON.stringify(postData),
-      }
-    );
-
-    if (!response.ok) {
-      throw new Error(`Failed to save edited post: ${response.statusText}`);
-    }
-
-    alert("Post edited successfully");
-  } catch (error) {
-    console.error("Error saving edited post:", error);
-  }
-}
-
 // Toggle element visibility
-function toggleElementVisibility(element) {
+function elementShow(element) {
   element.style.display =
     element.style.display === "none" || element.style.display === ""
       ? "block"
@@ -165,90 +108,70 @@ function toggleElementVisibility(element) {
 
 // Initial setup
 document.addEventListener("DOMContentLoaded", () => {
-  updateButtonsVisibility();
+  ButtonShow();
   fetchAndRenderPost();
 
   const deletePostBtn = document.getElementById("delete-post-btn");
   deletePostBtn.addEventListener("click", async () => {
     try {
+      // Ask for confirmation
+      const confirmed = confirm("Are you sure you want to delete this post?");
+      if (!confirmed) return; // If not confirmed, return without deleting
+
       const token = localStorage.getItem("accessToken");
       if (!token) throw new Error("No access token found in local storage");
       const postId = getPostIdFromURL();
       await deletePost(token, postId);
+
+      // Refresh the page after successful deletion
+      window.location.reload();
     } catch (error) {
       console.error("Error deleting post:", error);
     }
   });
-
-  const editButton = document.getElementById("edit-post-btn");
-  const editForm = document.getElementById("edit-show");
-  editButton.addEventListener("click", () => toggleElementVisibility(editForm));
-
-  const saveEditBtn = document.getElementById("save-edit-btn");
-  saveEditBtn.style.display = localStorage.getItem("accessToken")
-    ? "block"
-    : "none";
-  saveEditBtn.addEventListener("click", async () => {
-    try {
-      const token = localStorage.getItem("accessToken");
-      if (!token) throw new Error("Access token not found in local storage");
-
-      const title = document.getElementById("title").value;
-      const body = document.getElementById("body").value;
-      const tags = document
-        .getElementById("tags")
-        .value.split(",")
-        .map((tag) => tag.trim());
-      const mediaUrl = document.getElementById("media-url").value;
-      const mediaAlt = document.getElementById("media-alt").value;
-
-      const postData = {
-        title,
-        body,
-        tags,
-        media: { url: mediaUrl, alt: mediaAlt },
-      };
-      const postId = getPostIdFromURL();
-      await updatePost(token, postId, postData);
-    } catch (error) {
-      console.error("Error saving edited post:", error);
-    }
-  });
 });
 
+const editButton = document.getElementById("edit-post-btn");
+const editForm = document.getElementById("edit-show");
+editButton.addEventListener("click", () => elementShow(editForm));
 
-// Function to toggle between login and logout
-function toggleLoginLogout() {
-    const accessToken = localStorage.getItem("accessToken");
-  
-    if (accessToken) {
-      // If logged in, perform logout actions
-      localStorage.clear(); // Clear local storage
-      window.location.href = "/index.html"; // Redirect to index page
-    } else {
-      // If not logged in, redirect to the login page
-      window.location.href = "/login.html";
-    }
+const saveEditBtn = document.getElementById("save-edit-btn");
+saveEditBtn.style.display = localStorage.getItem("accessToken")
+  ? "block"
+  : "none";
+saveEditBtn.addEventListener("click", async () => {
+  try {
+    const token = localStorage.getItem("accessToken");
+    if (!token) throw new Error("Access token not found in local storage");
+
+    const title = document.getElementById("title").value;
+    const body = document.getElementById("body").value;
+    const tags = document
+      .getElementById("tags")
+      .value.split(",")
+      .map((tag) => tag.trim());
+    const mediaUrl = document.getElementById("media-url").value;
+    const mediaAlt = document.getElementById("media-alt").value;
+
+    const postData = {
+      title,
+      body,
+      tags,
+      media: { url: mediaUrl, alt: mediaAlt },
+    };
+    const postId = getPostIdFromURL();
+    await updatePost(token, postId, postData);
+
+    // Refresh the page after successfully saving the edit
+    window.location.reload();
+  } catch (error) {
+    console.error("Error saving edited post:", error);
   }
-  
-  // Function to check if the user is logged in
-  function checkLoginStatus() {
-    const accessToken = localStorage.getItem("accessToken");
-    const loginButton = document.getElementById("login-logout-btn");
-  
-    if (accessToken) {
-      // If logged in, change button text to "Logout" and add event listener
-      loginButton.textContent = "Logout";
-      loginButton.addEventListener("click", toggleLoginLogout);
-    } else {
-      // If not logged in, keep button text as "Login" and add event listener
-      loginButton.textContent = "Login";
-      loginButton.addEventListener("click", () => {
-        window.location.href = "/login.html";
-      });
-    }
-  }
-  
-  // Call checkLoginStatus function when the page loads
-  document.addEventListener("DOMContentLoaded", checkLoginStatus);
-  
+});
+
+// Call checkLoginStatus function when the page loads
+document.addEventListener("DOMContentLoaded", checkLoginStatus);
+
+// Use toggleLoginLogout function when a logout button is clicked
+const logoutButton = document.getElementById("login-logout-btn");
+logoutButton.addEventListener("click", toggleLoginLogout);

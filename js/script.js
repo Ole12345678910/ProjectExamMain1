@@ -1,17 +1,19 @@
-import { fetchApi, myApiKey, API_BASE_URL } from "./api.js";
+import { fetchApi, myApiKey } from "./api.js";
+import {
+  toggleLoginLogout,
+  checkLoginStatus,
+  initializeCarousel,
+  postButton,
+} from "./utility.js";
 
-// Function to show buttons based on certain conditions (e.g., after login)
 function showButton() {
   const accessToken = localStorage.getItem("accessToken");
-  const BlogName = localStorage.getItem("name");
-
   if (accessToken) {
     document.getElementById("show-button").style.display = "inline-block";
-    document.getElementById("blogName").innerHTML = "Welcome " + BlogName;
-  } else {
-    // Optionally, you can choose to do something else here (e.g., redirect to login page)
   }
 }
+
+showButton();
 
 // Event listener for button click to toggle visibility of create post section
 document.addEventListener("DOMContentLoaded", () => {
@@ -24,76 +26,7 @@ document.addEventListener("DOMContentLoaded", () => {
   });
 });
 
-// Call the showButton function when the page loads
-showButton();
-
-// Function to create a new post
-async function createPost(token, postData) {
-  try {
-    const response = await fetch(`${API_BASE_URL}blog/posts/ole123`, {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-        Authorization: `Bearer ${token}`,
-      },
-      body: JSON.stringify(postData),
-    });
-
-    if (!response.ok) {
-      throw new Error(`Failed to create post. Status: ${response.status}`);
-    }
-
-    const responseData = await response.json();
-    alert("Post created successfully:", responseData);
-    return responseData; // Return the created post data if needed
-  } catch (error) {
-    console.error("Error creating post:", error);
-    throw error;
-  }
-}
-
-// Function to retrieve access token from local storage
-function getTokenFromLocalStorage() {
-  const token = localStorage.getItem("accessToken");
-  if (!token) {
-    throw new Error("No access token found in local storage");
-  }
-  return token;
-}
-
-// Event listener for create post button click to handle post creation
-document.addEventListener("DOMContentLoaded", () => {
-  const createPostBtn = document.getElementById("create-post-btn");
-
-  createPostBtn.addEventListener("click", async () => {
-    try {
-      const token = getTokenFromLocalStorage();
-      const title = document.getElementById("title").value;
-      const body = document.getElementById("body").value;
-      const tags = document
-        .getElementById("tags")
-        .value.split(",")
-        .map((tag) => tag.trim());
-      const mediaUrl = document.getElementById("media-url").value;
-      const mediaAlt = document.getElementById("media-alt").value;
-
-      const postData = {
-        title,
-        body,
-        tags,
-        media: {
-          url: mediaUrl,
-          alt: mediaAlt,
-        },
-      };
-
-      await createPost(token, postData);
-      alert("Post created successfully!");
-    } catch (error) {
-      console.error("Error creating post:", error);
-    }
-  });
-});
+postButton();
 
 // Fetch data for the first set of posts and create carousel
 fetchApi(myApiKey)
@@ -150,55 +83,6 @@ function createCarousel(postsData, container) {
   }
 }
 
-// Function to initialize carousel
-function initializeCarousel() {
-  const prevButton = document.querySelector(".prev-btn");
-  const nextButton = document.querySelector(".next-btn");
-  const postCards = document.querySelectorAll(".post");
-  let currentIndex = 0;
-  let cardWidth =
-    postCards[0].offsetWidth +
-    parseInt(getComputedStyle(postCards[0]).marginRight);
-
-  const moveAmount = 1;
-
-  function updateCarousel() {
-    postCards.forEach((card, index) => {
-      card.style.transform = `translateX(-${currentIndex}px)`;
-    });
-  }
-
-  function moveNext() {
-    currentIndex += moveAmount * cardWidth;
-    if (currentIndex >= postCards.length * cardWidth) {
-      currentIndex = 0;
-    }
-    updateCarousel();
-  }
-
-  function movePrev() {
-    currentIndex -= moveAmount * cardWidth;
-    if (currentIndex < 0) {
-      currentIndex = postCards.length * cardWidth - cardWidth;
-    }
-    updateCarousel();
-  }
-
-  nextButton.addEventListener("click", moveNext);
-  prevButton.addEventListener("click", movePrev);
-
-  setInterval(moveNext, 4000); // Auto-scroll every 4 seconds
-
-  // Resize event listener
-  window.addEventListener("resize", () => {
-    cardWidth =
-      postCards[0].offsetWidth +
-      parseInt(getComputedStyle(postCards[0]).marginRight);
-    currentIndex = currentIndex % (postCards.length * cardWidth);
-    updateCarousel();
-  });
-}
-
 // Fetch and display other posts
 fetchApi(myApiKey)
   .then((response) => {
@@ -245,37 +129,9 @@ fetchApi(myApiKey)
     console.error("Fetch operation failed:", error);
   });
 
-// Function to toggle between login and logout
-function toggleLoginLogout() {
-  const accessToken = localStorage.getItem("accessToken");
-
-  if (accessToken) {
-    // If logged in, perform logout actions
-    localStorage.clear(); // Clear local storage
-    window.location.href = "/index.html"; // Redirect to index page
-  } else {
-    // If not logged in, redirect to the login page
-    window.location.href = "/account/login.html";
-  }
-}
-
-// Function to check if the user is logged in
-function checkLoginStatus() {
-  const accessToken = localStorage.getItem("accessToken");
-  const loginButton = document.getElementById("login-logout-btn");
-
-  if (accessToken) {
-    // If logged in, change button text to "Logout" and add event listener
-    loginButton.textContent = "Logout";
-    loginButton.addEventListener("click", toggleLoginLogout);
-  } else {
-    // If not logged in, keep button text as "Login" and add event listener
-    loginButton.textContent = "Login";
-    loginButton.addEventListener("click", () => {
-      window.location.href = "/account/login.html";
-    });
-  }
-}
-
 // Call checkLoginStatus function when the page loads
 document.addEventListener("DOMContentLoaded", checkLoginStatus);
+
+// Use toggleLoginLogout function when a logout button is clicked
+const logoutButton = document.getElementById("login-logout-btn");
+logoutButton.addEventListener("click", toggleLoginLogout);
