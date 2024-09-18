@@ -55,14 +55,14 @@ body {
 
 /* Line header styles */
 .line-header {
-  color: var(--main-dark-beige);
   margin: 1rem;
+  color: var(--main-light-gray);
 }
 
 /* Line styles */
 .line {
   margin: 3rem 1rem;
-  color: var(--main-dark-beige);
+  color: var(--main-light-gray);
 }
 
 /* Text container styles */
@@ -108,6 +108,7 @@ body {
 
 /* Slider container styles */
 .slider-container {
+  /* Layout properties */
   grid-row: 2;
   justify-content: space-between;
   display: flex;
@@ -115,6 +116,8 @@ body {
   bottom: 230px;
   width: 750px;
   justify-self: center;
+
+  /* Styling properties */
   background: transparent;
   overflow: hidden;
 }
@@ -376,7 +379,8 @@ body {
   display: flex;
   justify-self: start;
   font-size: var(--medium-font-size);
-  align-self: center;
+  align-self: center
+  ;
   color: var(--main-white);
   font-style: italic;
 }
@@ -571,7 +575,8 @@ body {
 #save-edit-btn {
   background-color: var(--main-dark-blue);
   color: var(--main-white);
-  font-size: var (--standard-font-size);
+  font-size: var
+  (--standard-font-size);
   border: none;
   margin: 1rem 0;
   width: 100%;

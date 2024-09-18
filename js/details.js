@@ -130,7 +130,7 @@ document.addEventListener("DOMContentLoaded", () => {
     }
   });
 });
-
+//edit and show button
 const editButton = document.getElementById("edit-post-btn");
 const editForm = document.getElementById("edit-show");
 editButton.addEventListener("click", () => elementShow(editForm));
